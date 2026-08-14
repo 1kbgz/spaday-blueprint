@@ -1,0 +1,21 @@
+spaday_blueprint
+================
+
+.. py:module:: spaday_blueprint
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   spaday_blueprint.__version__
+
+
+Package Contents
+----------------
+
+.. py:data:: __version__
+   :value: '0.1.0'
+
+

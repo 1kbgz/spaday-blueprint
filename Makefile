@@ -27,6 +27,12 @@ build-js:
 
 build: build-js build-py  ## build the project
 
+.PHONY: catalog
+catalog:  ## regenerate the typed catalog from the Blueprint packages' manifests
+	cd js; pnpm manifest
+	python -m spaday.cem spaday_blueprint/custom-elements.json -o spaday_blueprint/components.py
+	python -m ruff format spaday_blueprint/components.py
+
 .PHONY: install
 install:  ## install python library
 	uv pip install .

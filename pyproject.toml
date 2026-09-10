@@ -29,7 +29,12 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
 ]
 
-dependencies = []
+dependencies = [
+    "spaday>=0.8.0,<1.0",
+]
+
+[project.entry-points."spaday.component_packages"]
+blueprint = "spaday_blueprint:package"
 
 [project.optional-dependencies]
 develop = [
@@ -44,9 +49,11 @@ develop = [
     "pytest",
     "pytest-cov",
     "ruff",
+    "starlette",
     "twine",
     "ty",
     "uv",
+    "uvicorn",
     "wheel",
 ]
 
@@ -84,7 +91,8 @@ replace = '"version": "{new_version}"'
 [tool.coverage.run]
 branch = true
 omit = [
-    "spaday_blueprint/tests/integration/",
+    "spaday_blueprint/components.py",
+    "spaday_blueprint/tests/integration.py",
 ]
 
 [tool.coverage.report]

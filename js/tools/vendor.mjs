@@ -1,0 +1,180 @@
+/* Build a library's public modules into a tree the page can share through an import map.
+ *
+ * A library that registers global custom element names cannot load twice on a page, so this
+ * package serves one copy under the library's own bare specifiers (`imports` in the Python
+ * package): another library on the page that imports it by name gets this copy instead of
+ * registering the same tags a second time. The library publishes no build that can be served as-is
+ * -- its modules import their dependencies by name -- so this builds one. Every module its
+ * package.json "exports" names becomes an entry, written where that export points, and esbuild's
+ * code splitting moves what the entries share into chunks, so each module exists once whichever
+ * entry the page reaches it through.
+ *
+ * `patches` replaces the source of a module, keyed by `<package>/<file>`, for the rare published
+ * module whose code does not match its own types. Returns the import map entries,
+ * `{specifier: path under the vendor directory}`.
+ */
+import esbuild from "esbuild";
+import fs from "fs";
+import path from "path";
+
+const CONDITIONS = ["browser", "import", "module", "default"];
+const SCRIPT = /\.m?js$/;
+// benchmarks, tests and stories ship in some dists and import dev-only packages
+const NOT_RUNTIME =
+  /(\.(bench|spec|test|stories)|-test-helpers|-test-suites|-suites)\.m?js$/;
+
+/** The JS file an "exports" value points at, preferring browser/import conditions. */
+function exportTarget(value) {
+  if (typeof value === "string") return value;
+  if (Array.isArray(value))
+    return value.map(exportTarget).find(Boolean) ?? null;
+  for (const condition of CONDITIONS) {
+    if (value && condition in value) return exportTarget(value[condition]);
+  }
+  return null;
+}
+
+/** Every path an "exports" value names under any condition. */
+function allTargets(value) {
+  if (typeof value === "string") return [value];
+  if (Array.isArray(value)) return value.flatMap(allTargets);
+  return value ? Object.values(value).flatMap(allTargets) : [];
+}
+
+function filesUnder(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir, { withFileTypes: true })
+    .flatMap((entry) =>
+      entry.isDirectory()
+        ? filesUnder(path.join(dir, entry.name))
+        : [path.join(dir, entry.name)],
+    );
+}
+
+/** Every script export of `name`: [specifier, file relative to the package] pairs. */
+function publicModules(name) {
+  const root = path.resolve("node_modules", name);
+  const pkg = JSON.parse(
+    fs.readFileSync(path.join(root, "package.json"), "utf8"),
+  );
+  // a package without "exports" exposes every file by its path, and its "module" or "main" under
+  // its bare name
+  const map = pkg.exports ?? {
+    ".": pkg.module ?? pkg.main ?? "index.js",
+    "./*": "./*",
+  };
+  const modules = [];
+  const prefixes = [];
+  for (const [key, value] of Object.entries(map)) {
+    const target = exportTarget(value)?.replace(/^\.\//, "");
+    if (!target) continue;
+    const specifier = `${name}${key.slice(1)}`;
+    if (!key.includes("*")) {
+      // some packages export files they do not ship (UI5's bundle.esm.js)
+      if (SCRIPT.test(target) && fs.existsSync(path.join(root, target)))
+        modules.push([specifier, target]);
+      continue;
+    }
+    const [keyHead, keyTail] = key.slice(2).split("*");
+    const [head, tail] = target.split("*");
+    // another condition's tree nested inside this one (a production build under dist/prod/) is not
+    // what this export serves
+    const elsewhere = allTargets(value)
+      .map((other) => other.replace(/^\.\//, "").split("*")[0])
+      .filter((other) => other !== head && other.startsWith(head));
+    let matched = 0;
+    for (const file of filesUnder(path.join(root, head))) {
+      const rel = path.relative(root, file).split(path.sep).join("/");
+      if (!rel.startsWith(head) || !rel.endsWith(tail) || !SCRIPT.test(rel))
+        continue;
+      if (elsewhere.some((other) => rel.startsWith(other))) continue;
+      if (rel.endsWith(".d.ts") || NOT_RUNTIME.test(rel)) continue;
+      const match = rel.slice(head.length, rel.length - tail.length);
+      if (!match) continue; // `dist/index.js` against `dist/*/index.js`: no subpath at all
+      modules.push([`${name}/${keyHead}${match}${keyTail}`, rel]);
+      matched += 1;
+    }
+    // a pattern whose key and target end alike maps as one prefix rather than file by file -- when
+    // it names any scripts at all (UI5's `./src/*` is TypeScript)
+    if (keyTail === tail && matched)
+      prefixes.push([`${name}/${keyHead}`, head]);
+  }
+  return { root, modules, prefixes };
+}
+
+export async function vendor(names, outdir, patches = {}) {
+  const unresolved = new Set();
+  const entryPoints = {};
+  const imports = {};
+  for (const name of names) {
+    const { root, modules, prefixes } = publicModules(name);
+    for (const [specifier, rel] of modules) {
+      entryPoints[`${name}/${rel.replace(SCRIPT, "")}`] = path.join(root, rel);
+      imports[specifier] = `${name}/${rel.replace(SCRIPT, ".js")}`;
+    }
+    for (const [specifier, head] of prefixes) {
+      // the prefix covers the exact entries that would resolve the same way; one it would resolve
+      // differently (`./*.js` onto `*/define.js` under a `./*/` prefix) has to stay
+      const target = `${name}/${head}`;
+      for (const [key, value] of Object.entries(imports)) {
+        if (
+          key.startsWith(specifier) &&
+          value === target + key.slice(specifier.length)
+        )
+          delete imports[key];
+      }
+      imports[specifier] = target;
+    }
+  }
+  await esbuild.build({
+    entryPoints,
+    outdir,
+    bundle: true,
+    splitting: true,
+    format: "esm",
+    target: ["es2022"],
+    minify: true,
+    chunkNames: "chunks/[name]-[hash]",
+    logLevel: "warning",
+    plugins: [
+      {
+        // a module that imports a package the library never installed (a benchmark helper and its
+        // dev-only harness) keeps that import rather than failing the build; it can only matter
+        // to a page that imports such a module, and the build names it
+        name: "dev-only-imports",
+        setup(build) {
+          build.onResolve({ filter: /^[^./]/ }, async (args) => {
+            if (args.pluginData?.probing) return undefined;
+            const result = await build.resolve(args.path, {
+              kind: args.kind,
+              resolveDir: args.resolveDir,
+              importer: args.importer,
+              pluginData: { probing: true },
+            });
+            if (!result.errors.length) return undefined;
+            unresolved.add(args.path);
+            return { path: args.path, external: true };
+          });
+        },
+      },
+      {
+        name: "patches",
+        setup(build) {
+          build.onLoad({ filter: SCRIPT }, (args) => {
+            const file = args.path.split(path.sep).join("/");
+            const key = Object.keys(patches).find((k) =>
+              file.endsWith(`/node_modules/${k}`),
+            );
+            return key ? { contents: patches[key], loader: "js" } : undefined;
+          });
+        },
+      },
+    ],
+  });
+  if (unresolved.size)
+    console.warn(
+      `vendored modules keep unresolved imports: ${[...unresolved].join(", ")}`,
+    );
+  return imports;
+}

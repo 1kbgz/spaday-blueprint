@@ -1,11 +1,13 @@
 # spaday-blueprint
 
-Typed [Blueprint](https://blueprintui.dev) components and browser assets for spaday.
+Typed [Blueprint](https://blueprintui.dev) components and browser assets for [spaday](https://github.com/1kbgz/spaday).
 
 [![Build Status](https://github.com/1kbgz/spaday-blueprint/actions/workflows/build.yaml/badge.svg?branch=main&event=push)](https://github.com/1kbgz/spaday-blueprint/actions/workflows/build.yaml)
 [![codecov](https://codecov.io/gh/1kbgz/spaday-blueprint/branch/main/graph/badge.svg)](https://codecov.io/gh/1kbgz/spaday-blueprint)
 [![License](https://img.shields.io/github/license/1kbgz/spaday-blueprint)](https://github.com/1kbgz/spaday-blueprint)
 [![PyPI](https://img.shields.io/pypi/v/spaday-blueprint.svg)](https://pypi.python.org/pypi/spaday-blueprint)
+
+[![Preview of blueprint components in spaday rendering a release console](https://raw.githubusercontent.com/1kbgz/spaday-blueprint/main/docs/img/preview.webp)](./spaday_blueprint/example.py)
 
 ## Overview
 
@@ -69,12 +71,6 @@ nothing registers twice.
   `document.createElement` rejects, so spaday cannot render it until that is fixed upstream.
 - `@blueprintui/icons`' root module omits the `BpIcon` export its types declare; the served copy
   restores it, since Blueprint's own components import it from there.
-
-## Development
-
-`make catalog` regenerates the typed classes from the installed Blueprint packages: it collects
-their manifests into `spaday_blueprint/custom-elements.json` (`js/tools/manifest.mjs`) and generates
-`spaday_blueprint/components.py` from it.
 
 > [!NOTE]
 > This library was generated using [copier](https://copier.readthedocs.io/en/stable/) from the [Base Python Project Template repository](https://github.com/python-project-templates/base).

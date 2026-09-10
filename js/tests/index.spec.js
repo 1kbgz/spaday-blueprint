@@ -52,6 +52,27 @@ test("publishes the Blueprint version it serves", async ({ page }) => {
   ).toMatch(/^\d+\.\d+\.\d+/);
 });
 
+test("a Blueprint token set on the app drives the shell palette inside it", async ({
+  page,
+}) => {
+  // what `App().css(bp_status_accent_background_200=...)` renders
+  await page.goto("/dist/index.html");
+  expect(
+    await page.evaluate(() => {
+      const app = document.createElement("spa-app");
+      app.style.setProperty(
+        "--bp-status-accent-background-200",
+        "rgb(255, 0, 0)",
+      );
+      const probe = document.createElement("div");
+      probe.style.color = "var(--spa-accent)";
+      app.append(probe);
+      document.body.append(app);
+      return getComputedStyle(probe).color;
+    }),
+  ).toBe("rgb(255, 0, 0)");
+});
+
 test("follows spaday's page mode, islands included", async ({ page }) => {
   await page.goto("/dist/index.html");
   const r = await page.evaluate(() => {

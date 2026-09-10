@@ -5,10 +5,11 @@
 /* Blueprint is the design system, so it drives the shell palette rather than deferring to it: every
  * --spa-* token spaday and its component packages read is mapped onto the Blueprint token that owns
  * it. Restyle Blueprint (its --bp-* tokens, or its dark theme) and the shell, the graphs, the tables
- * and the trees follow. Declared wherever Blueprint's theme can change -- the root, a bp-theme
- * attribute, spaday's wa-dark / wa-light islands -- so each recomputes against the tokens in force
- * there instead of inheriting the root's. */
+ * and the trees follow. Declared wherever Blueprint's theme can change -- the root, the spaday app a
+ * `css()` call themes, a bp-theme attribute, spaday's wa-dark / wa-light islands -- so each
+ * recomputes against the tokens in force there instead of inheriting the root's. */
 :root,
+spa-app,
 [bp-theme],
 .wa-dark,
 .wa-light {

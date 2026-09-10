@@ -105,6 +105,11 @@ function resolve(decl, owner, missing) {
   // event without one names nothing anyone can listen for
   out.slots = out.slots.map((slot) => ({ ...slot, name: slot.name ?? "" }));
   out.events = out.events.filter((event) => event.name);
+  // the analyzer's expanded type (`'primary' | 'outline' | ...`) where the declared one is an alias
+  // (`ButtonAppearance`) that means nothing without the library's sources
+  for (const entry of [...out.attributes, ...(out.members ?? [])]) {
+    if (entry.parsedType?.text) entry.type = { text: entry.parsedType.text };
+  }
   for (const { decl: ancestor, from } of ancestors(decl, owner, missing)) {
     for (const key of MERGED) {
       const have = new Set(out[key].map((entry) => entry.name));

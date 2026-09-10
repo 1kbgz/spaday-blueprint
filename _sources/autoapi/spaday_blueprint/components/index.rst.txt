@@ -1,25 +1,7 @@
-spaday_blueprint
-================
+spaday_blueprint.components
+===========================
 
-.. py:module:: spaday_blueprint
-
-
-Submodules
-----------
-
-.. toctree::
-   :maxdepth: 1
-
-   /autoapi/spaday_blueprint/components/index
-
-
-Attributes
-----------
-
-.. autoapisummary::
-
-   spaday_blueprint.package
-   spaday_blueprint.TOKENS
+.. py:module:: spaday_blueprint.components
 
 
 Classes
@@ -27,107 +9,91 @@ Classes
 
 .. autoapisummary::
 
-   spaday_blueprint.BpAccordion
-   spaday_blueprint.BpAccordionContent
-   spaday_blueprint.BpAccordionHeader
-   spaday_blueprint.BpAccordionPanel
-   spaday_blueprint.BpAlert
-   spaday_blueprint.BpAlertGroup
-   spaday_blueprint.BpAvatar
-   spaday_blueprint.BpBadge
-   spaday_blueprint.BpBreadcrumb
-   spaday_blueprint.BpButton
-   spaday_blueprint.BpButtonCopy
-   spaday_blueprint.BpButtonExpand
-   spaday_blueprint.BpButtonGroup
-   spaday_blueprint.BpButtonHandle
-   spaday_blueprint.BpButtonIcon
-   spaday_blueprint.BpButtonResize
-   spaday_blueprint.BpButtonSort
-   spaday_blueprint.BpCard
-   spaday_blueprint.BpChatGroup
-   spaday_blueprint.BpChatMessage
-   spaday_blueprint.BpCheckbox
-   spaday_blueprint.BpColor
-   spaday_blueprint.BpDate
-   spaday_blueprint.BpDialog
-   spaday_blueprint.BpDivider
-   spaday_blueprint.BpDrawer
-   spaday_blueprint.BpDropdown
-   spaday_blueprint.BpField
-   spaday_blueprint.BpFieldMessage
-   spaday_blueprint.BpFieldset
-   spaday_blueprint.BpFile
-   spaday_blueprint.BpFormGroup
-   spaday_blueprint.BpFormatBytes
-   spaday_blueprint.BpFormatDatetime
-   spaday_blueprint.BpFormatNumber
-   spaday_blueprint.BpFormatRelativeTime
-   spaday_blueprint.BpFormatToken
-   spaday_blueprint.BpHeader
-   spaday_blueprint.BpHeaderItem
-   spaday_blueprint.BpIcon
-   spaday_blueprint.BpInput
-   spaday_blueprint.BpMenu
-   spaday_blueprint.BpMenuItem
-   spaday_blueprint.BpMonth
-   spaday_blueprint.BpNav
-   spaday_blueprint.BpNavGroup
-   spaday_blueprint.BpNavItem
-   spaday_blueprint.BpNumber
-   spaday_blueprint.BpNumberStepper
-   spaday_blueprint.BpOption
-   spaday_blueprint.BpPage
-   spaday_blueprint.BpPagination
-   spaday_blueprint.BpPaginationInput
-   spaday_blueprint.BpPanel
-   spaday_blueprint.BpPassword
-   spaday_blueprint.BpPin
-   spaday_blueprint.BpProgressBar
-   spaday_blueprint.BpProgressCircle
-   spaday_blueprint.BpProgressDot
-   spaday_blueprint.BpRadio
-   spaday_blueprint.BpRange
-   spaday_blueprint.BpRating
-   spaday_blueprint.BpSearch
-   spaday_blueprint.BpSelect
-   spaday_blueprint.BpSkeleton
-   spaday_blueprint.BpStepper
-   spaday_blueprint.BpStepperItem
-   spaday_blueprint.BpSwitch
-   spaday_blueprint.BpTab
-   spaday_blueprint.BpTabList
-   spaday_blueprint.BpTabPanel
-   spaday_blueprint.BpTabs
-   spaday_blueprint.BpTag
-   spaday_blueprint.BpTelephone
-   spaday_blueprint.BpTextarea
-   spaday_blueprint.BpTime
-   spaday_blueprint.BpToast
-   spaday_blueprint.BpToggletip
-   spaday_blueprint.BpTooltip
-   spaday_blueprint.BpTree
-   spaday_blueprint.BpTreeItem
+   spaday_blueprint.components.BpAccordionContent
+   spaday_blueprint.components.BpAccordion
+   spaday_blueprint.components.BpAccordionHeader
+   spaday_blueprint.components.BpAccordionPanel
+   spaday_blueprint.components.BpAlert
+   spaday_blueprint.components.BpAlertGroup
+   spaday_blueprint.components.BpAvatar
+   spaday_blueprint.components.BpBadge
+   spaday_blueprint.components.BpBreadcrumb
+   spaday_blueprint.components.BpButtonCopy
+   spaday_blueprint.components.BpButtonExpand
+   spaday_blueprint.components.BpButtonGroup
+   spaday_blueprint.components.BpButtonHandle
+   spaday_blueprint.components.BpButtonIcon
+   spaday_blueprint.components.BpButtonResize
+   spaday_blueprint.components.BpButtonSort
+   spaday_blueprint.components.BpButton
+   spaday_blueprint.components.BpCard
+   spaday_blueprint.components.BpChatMessage
+   spaday_blueprint.components.BpChatGroup
+   spaday_blueprint.components.BpCheckbox
+   spaday_blueprint.components.BpColor
+   spaday_blueprint.components.BpDate
+   spaday_blueprint.components.BpDialog
+   spaday_blueprint.components.BpDivider
+   spaday_blueprint.components.BpDrawer
+   spaday_blueprint.components.BpDropdown
+   spaday_blueprint.components.BpFile
+   spaday_blueprint.components.BpFormatBytes
+   spaday_blueprint.components.BpFormatDatetime
+   spaday_blueprint.components.BpFormatNumber
+   spaday_blueprint.components.BpFormatRelativeTime
+   spaday_blueprint.components.BpFormatToken
+   spaday_blueprint.components.BpFieldMessage
+   spaday_blueprint.components.BpField
+   spaday_blueprint.components.BpFieldset
+   spaday_blueprint.components.BpFormGroup
+   spaday_blueprint.components.BpHeader
+   spaday_blueprint.components.BpHeaderItem
+   spaday_blueprint.components.BpInput
+   spaday_blueprint.components.BpMenu
+   spaday_blueprint.components.BpMenuItem
+   spaday_blueprint.components.BpMonth
+   spaday_blueprint.components.BpNav
+   spaday_blueprint.components.BpNavGroup
+   spaday_blueprint.components.BpNavItem
+   spaday_blueprint.components.BpNumberStepper
+   spaday_blueprint.components.BpNumber
+   spaday_blueprint.components.BpPage
+   spaday_blueprint.components.BpPagination
+   spaday_blueprint.components.BpPaginationInput
+   spaday_blueprint.components.BpPanel
+   spaday_blueprint.components.BpPassword
+   spaday_blueprint.components.BpPin
+   spaday_blueprint.components.BpProgressBar
+   spaday_blueprint.components.BpProgressCircle
+   spaday_blueprint.components.BpProgressDot
+   spaday_blueprint.components.BpRadio
+   spaday_blueprint.components.BpRange
+   spaday_blueprint.components.BpRating
+   spaday_blueprint.components.BpSearch
+   spaday_blueprint.components.BpSelect
+   spaday_blueprint.components.BpOption
+   spaday_blueprint.components.BpSkeleton
+   spaday_blueprint.components.BpStepper
+   spaday_blueprint.components.BpStepperItem
+   spaday_blueprint.components.BpSwitch
+   spaday_blueprint.components.BpTabs
+   spaday_blueprint.components.BpTabList
+   spaday_blueprint.components.BpTabPanel
+   spaday_blueprint.components.BpTab
+   spaday_blueprint.components.BpTag
+   spaday_blueprint.components.BpTelephone
+   spaday_blueprint.components.BpTextarea
+   spaday_blueprint.components.BpTime
+   spaday_blueprint.components.BpToast
+   spaday_blueprint.components.BpToggletip
+   spaday_blueprint.components.BpTooltip
+   spaday_blueprint.components.BpTree
+   spaday_blueprint.components.BpTreeItem
+   spaday_blueprint.components.BpIcon
 
 
-Package Contents
-----------------
-
-.. py:class:: BpAccordion(*children: spaday.component.Child, key: str | None = None, layer: Literal['flat', 'container'] | None = None, **props: Any)
-
-   Bases: :py:obj:`spaday.component.Component`
-
-
-   The accordion component is used to display a large amount of content in a small space. The accordion should be used to group related content together.
-
-
-   .. py:attribute:: tag
-      :value: 'bp-accordion'
-
-
-
-   .. py:attribute:: schema
-
+Module Contents
+---------------
 
 .. py:class:: BpAccordionContent(*children: spaday.component.Child, key: str | None = None, **props: Any)
 
@@ -139,6 +105,22 @@ Package Contents
 
    .. py:attribute:: tag
       :value: 'bp-accordion-content'
+
+
+
+   .. py:attribute:: schema
+
+
+.. py:class:: BpAccordion(*children: spaday.component.Child, key: str | None = None, layer: Literal['flat', 'container'] | None = None, **props: Any)
+
+   Bases: :py:obj:`spaday.component.Component`
+
+
+   The accordion component is used to display a large amount of content in a small space. The accordion should be used to group related content together.
+
+
+   .. py:attribute:: tag
+      :value: 'bp-accordion'
 
 
 
@@ -257,22 +239,6 @@ Package Contents
    .. py:attribute:: schema
 
 
-.. py:class:: BpButton(*children: spaday.component.Child, key: str | None = None, action: Literal['primary', 'secondary', 'flat', 'inline'] | None = None, status: Literal['accent', 'success', 'warning', 'danger'] | None = None, pressed: bool | None = None, selected: bool | None = None, expanded: bool | None = None, readonly: bool | None = None, disabled: bool | None = None, type: Literal['button', 'submit'] | None = None, name: str | None = None, value: str | None = None, popovertargetaction: Literal['toggle', 'show', 'hide'] | None = None, popoverTargetElement: Any = None, command: str | None = None, commandForElement: Any = None, interestForElement: Any = None, **props: Any)
-
-   Bases: :py:obj:`spaday.component.Component`
-
-
-   The button component should be used when the user needs to take an action. The text or icon used in the button should be clear and concise, communicating the action the button will take.
-
-
-   .. py:attribute:: tag
-      :value: 'bp-button'
-
-
-
-   .. py:attribute:: schema
-
-
 .. py:class:: BpButtonCopy(*children: spaday.component.Child, key: str | None = None, value: str | None = None, i18n: Any = None, shape: str | None = None, direction: Literal['up', 'down', 'left', 'right'] | None = None, action: Literal['primary', 'secondary', 'flat', 'inline'] | None = None, status: Literal['accent', 'success', 'warning', 'danger'] | None = None, pressed: bool | None = None, selected: bool | None = None, expanded: bool | None = None, readonly: bool | None = None, disabled: bool | None = None, type: Literal['button', 'submit'] | None = None, name: str | None = None, popovertargetaction: Literal['toggle', 'show', 'hide'] | None = None, popoverTargetElement: Any = None, command: str | None = None, commandForElement: Any = None, interestForElement: Any = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
@@ -385,6 +351,22 @@ Package Contents
    .. py:attribute:: schema
 
 
+.. py:class:: BpButton(*children: spaday.component.Child, key: str | None = None, action: Literal['primary', 'secondary', 'flat', 'inline'] | None = None, status: Literal['accent', 'success', 'warning', 'danger'] | None = None, pressed: bool | None = None, selected: bool | None = None, expanded: bool | None = None, readonly: bool | None = None, disabled: bool | None = None, type: Literal['button', 'submit'] | None = None, name: str | None = None, value: str | None = None, popovertargetaction: Literal['toggle', 'show', 'hide'] | None = None, popoverTargetElement: Any = None, command: str | None = None, commandForElement: Any = None, interestForElement: Any = None, **props: Any)
+
+   Bases: :py:obj:`spaday.component.Component`
+
+
+   The button component should be used when the user needs to take an action. The text or icon used in the button should be clear and concise, communicating the action the button will take.
+
+
+   .. py:attribute:: tag
+      :value: 'bp-button'
+
+
+
+   .. py:attribute:: schema
+
+
 .. py:class:: BpCard(*children: spaday.component.Child, key: str | None = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
@@ -401,22 +383,6 @@ Package Contents
    .. py:attribute:: schema
 
 
-.. py:class:: BpChatGroup(*children: spaday.component.Child, key: str | None = None, **props: Any)
-
-   Bases: :py:obj:`spaday.component.Component`
-
-
-   ```typescript import '@blueprintui/components/include/chat.js'; ``` ```html <bp-chat-group> <bp-chat-message type="sent">How are you?</bp-chat-message> <bp-chat-message type="received">Great!</bp-chat-message> </bp-chat-group> ```
-
-
-   .. py:attribute:: tag
-      :value: 'bp-chat-group'
-
-
-
-   .. py:attribute:: schema
-
-
 .. py:class:: BpChatMessage(*children: spaday.component.Child, key: str | None = None, type: Literal['sent', 'received'] | None = None, color: Literal['blue', 'green', 'red', 'yellow', 'purple'] | None = None, arrow: Any = None, progress: bool | None = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
@@ -427,6 +393,22 @@ Package Contents
 
    .. py:attribute:: tag
       :value: 'bp-chat-message'
+
+
+
+   .. py:attribute:: schema
+
+
+.. py:class:: BpChatGroup(*children: spaday.component.Child, key: str | None = None, **props: Any)
+
+   Bases: :py:obj:`spaday.component.Component`
+
+
+   ```typescript import '@blueprintui/components/include/chat.js'; ``` ```html <bp-chat-group> <bp-chat-message type="sent">How are you?</bp-chat-message> <bp-chat-message type="received">Great!</bp-chat-message> </bp-chat-group> ```
+
+
+   .. py:attribute:: tag
+      :value: 'bp-chat-group'
 
 
 
@@ -545,54 +527,6 @@ Package Contents
    .. py:attribute:: schema
 
 
-.. py:class:: BpField(*children: spaday.component.Child, key: str | None = None, layout: Any = None, control_width: Literal['shrink'] | None = None, **props: Any)
-
-   Bases: :py:obj:`spaday.component.Component`
-
-
-   ```typescript import '@blueprintui/components/include/forms.js'; ``` ```html <bp-field> <label>field</label> <input type="text" /> </bp-field> ```
-
-
-   .. py:attribute:: tag
-      :value: 'bp-field'
-
-
-
-   .. py:attribute:: schema
-
-
-.. py:class:: BpFieldMessage(*children: spaday.component.Child, key: str | None = None, status: Literal['error', 'success'] | None = None, error: Any = None, **props: Any)
-
-   Bases: :py:obj:`spaday.component.Component`
-
-
-   Control Message ```typescript import '@blueprintui/components/include/forms.js'; ``` ```html <bp-field> <label>Test</label> <input type="text" /> <bp-field-message>helper text</bp-field-message> </bp-field> ```
-
-
-   .. py:attribute:: tag
-      :value: 'bp-field-message'
-
-
-
-   .. py:attribute:: schema
-
-
-.. py:class:: BpFieldset(*children: spaday.component.Child, key: str | None = None, layout: Any = None, **props: Any)
-
-   Bases: :py:obj:`spaday.component.Component`
-
-
-   Control Group ```typescript import '@blueprintui/components/include/forms.js'; ``` ```html <bp-fieldset> <label>...</label> <label></label> <input ... /> <label></label> <input ... /> </bp-fieldset> ```
-
-
-   .. py:attribute:: tag
-      :value: 'bp-fieldset'
-
-
-
-   .. py:attribute:: schema
-
-
 .. py:class:: BpFile(*children: spaday.component.Child, key: str | None = None, i18n: Any = None, accept: str | None = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
@@ -603,22 +537,6 @@ Package Contents
 
    .. py:attribute:: tag
       :value: 'bp-file'
-
-
-
-   .. py:attribute:: schema
-
-
-.. py:class:: BpFormGroup(*children: spaday.component.Child, key: str | None = None, layout: Any = None, **props: Any)
-
-   Bases: :py:obj:`spaday.component.Component`
-
-
-   Form ```typescript import '@blueprintui/components/include/forms.js'; ``` ```html <bp-form-group layout="horizontal"> <bp-input> <label>Test</label> <input type="text" /> </bp-input> <bp-input> <label>Test</label> <input type="text" /> </bp-input> </bp-form-group> ```
-
-
-   .. py:attribute:: tag
-      :value: 'bp-form-group'
 
 
 
@@ -705,6 +623,70 @@ Package Contents
    .. py:attribute:: schema
 
 
+.. py:class:: BpFieldMessage(*children: spaday.component.Child, key: str | None = None, status: Literal['error', 'success'] | None = None, error: Any = None, **props: Any)
+
+   Bases: :py:obj:`spaday.component.Component`
+
+
+   Control Message ```typescript import '@blueprintui/components/include/forms.js'; ``` ```html <bp-field> <label>Test</label> <input type="text" /> <bp-field-message>helper text</bp-field-message> </bp-field> ```
+
+
+   .. py:attribute:: tag
+      :value: 'bp-field-message'
+
+
+
+   .. py:attribute:: schema
+
+
+.. py:class:: BpField(*children: spaday.component.Child, key: str | None = None, layout: Any = None, control_width: Literal['shrink'] | None = None, **props: Any)
+
+   Bases: :py:obj:`spaday.component.Component`
+
+
+   ```typescript import '@blueprintui/components/include/forms.js'; ``` ```html <bp-field> <label>field</label> <input type="text" /> </bp-field> ```
+
+
+   .. py:attribute:: tag
+      :value: 'bp-field'
+
+
+
+   .. py:attribute:: schema
+
+
+.. py:class:: BpFieldset(*children: spaday.component.Child, key: str | None = None, layout: Any = None, **props: Any)
+
+   Bases: :py:obj:`spaday.component.Component`
+
+
+   Control Group ```typescript import '@blueprintui/components/include/forms.js'; ``` ```html <bp-fieldset> <label>...</label> <label></label> <input ... /> <label></label> <input ... /> </bp-fieldset> ```
+
+
+   .. py:attribute:: tag
+      :value: 'bp-fieldset'
+
+
+
+   .. py:attribute:: schema
+
+
+.. py:class:: BpFormGroup(*children: spaday.component.Child, key: str | None = None, layout: Any = None, **props: Any)
+
+   Bases: :py:obj:`spaday.component.Component`
+
+
+   Form ```typescript import '@blueprintui/components/include/forms.js'; ``` ```html <bp-form-group layout="horizontal"> <bp-input> <label>Test</label> <input type="text" /> </bp-input> <bp-input> <label>Test</label> <input type="text" /> </bp-input> </bp-form-group> ```
+
+
+   .. py:attribute:: tag
+      :value: 'bp-form-group'
+
+
+
+   .. py:attribute:: schema
+
+
 .. py:class:: BpHeader(*children: spaday.component.Child, key: str | None = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
@@ -731,22 +713,6 @@ Package Contents
 
    .. py:attribute:: tag
       :value: 'bp-header-item'
-
-
-
-   .. py:attribute:: schema
-
-
-.. py:class:: BpIcon(*children: spaday.component.Child, key: str | None = None, shape: str | None = None, type: Literal['', 'solid'] | None = None, size: str | None = None, status: Literal['neutral', 'accent', 'success', 'warning', 'danger'] | None = None, badge: Literal['neutral', 'accent', 'success', 'warning', 'danger', ''] | None = None, direction: Any = None, inner_offset: float | None = None, **props: Any)
-
-   Bases: :py:obj:`spaday.component.Component`
-
-
-   Icon ```typescript import '@blueprintui/icons/include.js'; import '@blueprintui/icons/shapes/user.js'; ``` ```html <bp-icon shape="user"></bp-icon> ```
-
-
-   .. py:attribute:: tag
-      :value: 'bp-icon'
 
 
 
@@ -865,22 +831,6 @@ Package Contents
    .. py:attribute:: schema
 
 
-.. py:class:: BpNumber(*children: spaday.component.Child, key: str | None = None, type: str | None = None, **props: Any)
-
-   Bases: :py:obj:`spaday.component.Component`
-
-
-   The number input component is used to allow users to input numeric values with optional min, max, and step constraints.
-
-
-   .. py:attribute:: tag
-      :value: 'bp-number'
-
-
-
-   .. py:attribute:: schema
-
-
 .. py:class:: BpNumberStepper(*children: spaday.component.Child, key: str | None = None, continuous: bool | None = None, continuous_delay: float | None = None, continuous_interval: float | None = None, i18n: Any = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
@@ -897,16 +847,16 @@ Package Contents
    .. py:attribute:: schema
 
 
-.. py:class:: BpOption(*children: spaday.component.Child, key: str | None = None, **props: Any)
+.. py:class:: BpNumber(*children: spaday.component.Child, key: str | None = None, type: str | None = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
 
 
-   Option element for use within bp-select.
+   The number input component is used to allow users to input numeric values with optional min, max, and step constraints.
 
 
    .. py:attribute:: tag
-      :value: 'bp-option'
+      :value: 'bp-number'
 
 
 
@@ -1137,6 +1087,22 @@ Package Contents
    .. py:attribute:: schema
 
 
+.. py:class:: BpOption(*children: spaday.component.Child, key: str | None = None, **props: Any)
+
+   Bases: :py:obj:`spaday.component.Component`
+
+
+   Option element for use within bp-select.
+
+
+   .. py:attribute:: tag
+      :value: 'bp-option'
+
+
+
+   .. py:attribute:: schema
+
+
 .. py:class:: BpSkeleton(*children: spaday.component.Child, key: str | None = None, effect: Literal['pulse', 'sheen'] | None = None, shape: Literal['circle'] | None = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
@@ -1208,16 +1174,16 @@ Package Contents
    .. py:attribute:: schema
 
 
-.. py:class:: BpTab(*children: spaday.component.Child, key: str | None = None, selected: bool | None = None, pressed: bool | None = None, expanded: bool | None = None, readonly: bool | None = None, disabled: bool | None = None, type: Literal['button', 'submit'] | None = None, name: str | None = None, value: str | None = None, popovertargetaction: Literal['toggle', 'show', 'hide'] | None = None, popoverTargetElement: Any = None, command: str | None = None, commandForElement: Any = None, interestForElement: Any = None, **props: Any)
+.. py:class:: BpTabs(*children: spaday.component.Child, key: str | None = None, layout: Literal['horizontal', 'vertical'] | None = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
 
 
-   ```typescript import '@blueprintui/components/include/tabs.js'; ``` ```html <bp-tab></bp-tab> ```
+   The tabs component is used to display a group of related content in a tabbed interface. The tabs component consists of a collection of tabs, where each tab represents a different piece of content.
 
 
    .. py:attribute:: tag
-      :value: 'bp-tab'
+      :value: 'bp-tabs'
 
 
 
@@ -1256,16 +1222,16 @@ Package Contents
    .. py:attribute:: schema
 
 
-.. py:class:: BpTabs(*children: spaday.component.Child, key: str | None = None, layout: Literal['horizontal', 'vertical'] | None = None, **props: Any)
+.. py:class:: BpTab(*children: spaday.component.Child, key: str | None = None, selected: bool | None = None, pressed: bool | None = None, expanded: bool | None = None, readonly: bool | None = None, disabled: bool | None = None, type: Literal['button', 'submit'] | None = None, name: str | None = None, value: str | None = None, popovertargetaction: Literal['toggle', 'show', 'hide'] | None = None, popoverTargetElement: Any = None, command: str | None = None, commandForElement: Any = None, interestForElement: Any = None, **props: Any)
 
    Bases: :py:obj:`spaday.component.Component`
 
 
-   The tabs component is used to display a group of related content in a tabbed interface. The tabs component consists of a collection of tabs, where each tab represents a different piece of content.
+   ```typescript import '@blueprintui/components/include/tabs.js'; ``` ```html <bp-tab></bp-tab> ```
 
 
    .. py:attribute:: tag
-      :value: 'bp-tabs'
+      :value: 'bp-tab'
 
 
 
@@ -1423,7 +1389,19 @@ Package Contents
    .. py:attribute:: schema
 
 
-.. py:data:: package
+.. py:class:: BpIcon(*children: spaday.component.Child, key: str | None = None, shape: str | None = None, type: Literal['', 'solid'] | None = None, size: str | None = None, status: Literal['neutral', 'accent', 'success', 'warning', 'danger'] | None = None, badge: Literal['neutral', 'accent', 'success', 'warning', 'danger', ''] | None = None, direction: Any = None, inner_offset: float | None = None, **props: Any)
 
-.. py:data:: TOKENS
+   Bases: :py:obj:`spaday.component.Component`
+
+
+   Icon ```typescript import '@blueprintui/icons/include.js'; import '@blueprintui/icons/shapes/user.js'; ``` ```html <bp-icon shape="user"></bp-icon> ```
+
+
+   .. py:attribute:: tag
+      :value: 'bp-icon'
+
+
+
+   .. py:attribute:: schema
+
 

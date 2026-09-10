@@ -1,0 +1,81 @@
+integration
+===========
+
+.. py:module:: integration
+
+.. autoapi-nested-parse::
+
+   A spaday page on spaday-blueprint, shared with a downstream library through the import map.
+
+   The integration this exercises end to end:
+
+   * the generated catalog authored in Python and wired with spaday's own state -- two ``BpButton``\ s
+     drive a store field that a ``BpBadge`` reads;
+   * a downstream library that imports Blueprint by its bare specifiers, left as imports in its
+     bundle, which the page's import map resolves to spaday-blueprint's copy, so nothing registers the
+     same tags twice. It has no Python of its own beyond a schema-carrying :class:`~spaday.Component`
+     and a :class:`~spaday.ComponentPackage` serving its bundle.
+
+   Served for the browser tests; ``/conformance.js`` hands back the check that the package's own
+   bundle implements the catalog generated for it.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   integration.downstream_package
+   integration.page
+   integration.app
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   integration.DemoAction
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   integration.conformance
+
+
+Module Contents
+---------------
+
+.. py:class:: DemoAction(*children: Child, key: str | None = None, props: dict[str, Any] | None = None, **attrs: Any)
+
+   Bases: :py:obj:`spaday.Component`
+
+
+   The downstream library's element, bound from Python with no Python of its own.
+
+
+   .. py:attribute:: tag
+      :value: 'demo-action'
+
+
+
+   .. py:attribute:: schema
+
+
+.. py:data:: downstream_package
+
+.. py:data:: page
+
+.. py:function:: conformance(request) -> starlette.responses.PlainTextResponse
+   :async:
+
+
+   The browser-side check of spaday-blueprint's own bundle against its generated catalog.
+
+
+.. py:data:: app
+

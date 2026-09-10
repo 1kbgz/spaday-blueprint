@@ -200,7 +200,11 @@
   <ul>
 <li class="toctree-l1 has-children"><a class="reference internal" href="autoapi/index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="autoapi/test_all/index.html">test_all</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autoapi/spaday_blueprint/index.html">spaday_blueprint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/integration/index.html">integration</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="autoapi/spaday_blueprint/index.html">spaday_blueprint</a><input aria-label="Toggle navigation of spaday_blueprint" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/spaday_blueprint/components/index.html">spaday_blueprint.components</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -245,13 +249,64 @@
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="spaday-blueprint">
 <h1>spaday-blueprint<a class="headerlink" href="#spaday-blueprint" title="Link to this heading">¶</a></h1>
-<p>Blueprint for spaday</p>
+<p>Typed <a class="reference external" href="https://blueprintui.dev">Blueprint</a> components and browser assets for spaday.</p>
 <p><a class="reference external" href="https://github.com/1kbgz/spaday-blueprint/actions/workflows/build.yaml"><img alt="Build Status" src="https://github.com/1kbgz/spaday-blueprint/actions/workflows/build.yaml/badge.svg?branch=main&amp;event=push" /></a>
 <a class="reference external" href="https://codecov.io/gh/1kbgz/spaday-blueprint"><img alt="codecov" src="https://codecov.io/gh/1kbgz/spaday-blueprint/branch/main/graph/badge.svg" /></a>
 <a class="reference external" href="https://github.com/1kbgz/spaday-blueprint"><img alt="License" src="https://img.shields.io/github/license/1kbgz/spaday-blueprint" /></a>
 <a class="reference external" href="https://pypi.python.org/pypi/spaday-blueprint"><img alt="PyPI" src="https://img.shields.io/pypi/v/spaday-blueprint.svg" /></a></p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">spaday</span><span class="w"> </span><span class="kn">import</span> <span class="n">SetField</span><span class="p">,</span> <span class="n">serve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">spaday_blueprint</span><span class="w"> </span><span class="kn">import</span> <span class="n">BpBadge</span><span class="p">,</span> <span class="n">BpButton</span><span class="p">,</span> <span class="n">BpCard</span>
+
+<span class="n">page</span> <span class="o">=</span> <span class="n">BpCard</span><span class="p">(</span>
+    <span class="n">BpButton</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">"primary"</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="s2">"success"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Approve"</span><span class="p">)</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span> <span class="n">SetField</span><span class="p">(</span><span class="s2">"state"</span><span class="p">,</span> <span class="s2">"approved"</span><span class="p">)),</span>
+    <span class="n">BpBadge</span><span class="p">()</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">"textContent"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">serve</span><span class="p">(</span><span class="n">page</span><span class="p">,</span> <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="s2">"blueprint"</span><span class="p">],</span> <span class="n">store</span><span class="o">=</span><span class="p">{</span><span class="s2">"state"</span><span class="p">:</span> <span class="s2">"pending"</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Every Blueprint element has a typed class — 80 from <code class="docutils literal notranslate"><span class="pre">&#64;blueprintui/components</span></code> and <code class="docutils literal notranslate"><span class="pre">BpIcon</span></code> from
+<code class="docutils literal notranslate"><span class="pre">&#64;blueprintui/icons</span></code> — generated from their Custom Elements Manifests, so props, events and slots
+are checked when you author the tree. Installing the package does not inject assets; select it with
+<code class="docutils literal notranslate"><span class="pre">packages=[&quot;blueprint&quot;]</span></code> or pass the exported <code class="docutils literal notranslate"><span class="pre">package</span></code> descriptor.</p>
+</section>
+<section id="theming">
+<h2>Theming<a class="headerlink" href="#theming" title="Link to this heading">¶</a></h2>
+<p>The stylesheet maps spaday’s <code class="docutils literal notranslate"><span class="pre">--spa-*</span></code> shell palette onto Blueprint’s own tokens, so restyling
+Blueprint restyles the shell and every other spaday component package with it. <code class="docutils literal notranslate"><span class="pre">TOKENS</span></code> lists the
+Blueprint tokens wired to the palette, each settable through <code class="docutils literal notranslate"><span class="pre">css()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">App</span><span class="p">()</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="n">bp_status_accent_background_200</span><span class="o">=</span><span class="s2">"#0C4253"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Blueprint’s dark theme follows spaday’s page mode: a <code class="docutils literal notranslate"><span class="pre">wa-dark</span></code> class on the root (for example
+<code class="docutils literal notranslate"><span class="pre">App(...).bind_root_class(&quot;wa-dark&quot;,</span> <span class="pre">&quot;dark&quot;)</span></code>) or on any island switches it, and <code class="docutils literal notranslate"><span class="pre">wa-light</span></code> flips a
+nested island back. Blueprint’s own <code class="docutils literal notranslate"><span class="pre">bp-theme=&quot;dark&quot;</span></code> attribute works as well.</p>
+</section>
+<section id="sharing-blueprint-with-your-own-library">
+<h2>Sharing Blueprint with your own library<a class="headerlink" href="#sharing-blueprint-with-your-own-library" title="Link to this heading">¶</a></h2>
+<p>Blueprint registers global custom element names, so a second copy on the page throws from
+<code class="docutils literal notranslate"><span class="pre">customElements.define</span></code>. The package serves Blueprint’s modules under their own bare specifiers —
+<code class="docutils literal notranslate"><span class="pre">&#64;blueprintui/components/button</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;blueprintui/components/include/button.js</span></code>,
+<code class="docutils literal notranslate"><span class="pre">&#64;blueprintui/icons/shapes/user.js</span></code> and the rest of their exports — through the page’s import map.
+A library built on Blueprint that leaves those imports out of its bundle
+(<code class="docutils literal notranslate"><span class="pre">external:</span> <span class="pre">[&quot;&#64;blueprintui/components&quot;,</span> <span class="pre">&quot;&#64;blueprintui/icons&quot;]</span></code> with esbuild) gets this copy, and
+nothing registers twice.</p>
+</section>
+<section id="known-issues">
+<h2>Known issues<a class="headerlink" href="#known-issues" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Blueprint 2.20’s <code class="docutils literal notranslate"><span class="pre">bp-number-stepper</span></code> sets its <code class="docutils literal notranslate"><span class="pre">step</span></code> attribute from its constructor, which
+<code class="docutils literal notranslate"><span class="pre">document.createElement</span></code> rejects, so spaday cannot render it until that is fixed upstream.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;blueprintui/icons</span></code>’ root module omits the <code class="docutils literal notranslate"><span class="pre">BpIcon</span></code> export its types declare; the served copy
+restores it, since Blueprint’s own components import it from there.</p></li>
+</ul>
+</section>
+<section id="development">
+<h2>Development<a class="headerlink" href="#development" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">catalog</span></code> regenerates the typed classes from the installed Blueprint packages: it collects
+their manifests into <code class="docutils literal notranslate"><span class="pre">spaday_blueprint/custom-elements.json</span></code> (<code class="docutils literal notranslate"><span class="pre">js/tools/manifest.mjs</span></code>) and generates
+<code class="docutils literal notranslate"><span class="pre">spaday_blueprint/components.py</span></code> from it.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This library was generated using <a class="reference external" href="https://copier.readthedocs.io/en/stable/">copier</a> from the <a class="reference external" href="https://github.com/python-project-templates/base">Base Python Project Template repository</a>.</p>
@@ -305,8 +360,8 @@
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script data-searchlite-index="searchlite-index.json" defer="defer" src="_static/searchlite.js?v=43c3c99e"></script>
-    <script data-searchlite-adopt="true" defer="defer" src="_static/searchlite-ui.js?v=42b9d9bb"></script>
+    <script data-searchlite-index="searchlite-index.json" defer="defer" src="_static/searchlite.js?v=a5320898"></script>
+    <script data-searchlite-adopt="true" defer="defer" src="_static/searchlite-ui.js?v=4e4bdd69"></script>
     <script src="_static/js/custom.js?v=956e5d78"></script>
     </body>
 </html>

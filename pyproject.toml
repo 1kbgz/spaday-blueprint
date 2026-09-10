@@ -91,7 +91,8 @@ replace = '"version": "{new_version}"'
 [tool.coverage.run]
 branch = true
 omit = [
-    "spaday_blueprint/tests/integration/",
+    "spaday_blueprint/components.py",
+    "spaday_blueprint/tests/integration.py",
 ]
 
 [tool.coverage.report]

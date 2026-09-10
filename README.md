@@ -25,6 +25,20 @@ Every Blueprint element has a typed class — 80 from `@blueprintui/components` 
 are checked when you author the tree. Installing the package does not inject assets; select it with
 `packages=["blueprint"]` or pass the exported `package` descriptor.
 
+## Run the local example
+
+```bash
+python -m pip install -e ".[examples]"
+python -m spaday_blueprint.example
+```
+
+Open `http://127.0.0.1:8023` for the [release console](spaday_blueprint/example.py): service cards with
+progress circles and formatted bytes and numbers streamed from Python over transports, restarts through a
+Python endpoint confirmed in a toast, rollouts whose progress bars advance until they land, incidents
+acknowledged from alerts, a deploy form of select, input, number, date, range, radios, switch, checkbox
+and text area bound to spaday state and confirmed in a dialog, tabs driven from the store, and a dark
+switch that moves Blueprint and the spaday shell to the dark theme together.
+
 ## Theming
 
 The stylesheet maps spaday's `--spa-*` shell palette onto Blueprint's own tokens, so restyling

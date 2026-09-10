@@ -13,6 +13,10 @@ import path from "path";
 
 const PACKAGES = ["@blueprintui/components", "@blueprintui/icons"];
 const OUT = "../spaday_blueprint/custom-elements.json";
+// every element in the manifests registers itself when its module loads, so all are kept
+const REGISTERED = null;
+// tags a published manifest lists under names the package no longer registers
+const RENAMED = {};
 
 const readJson = (file) => JSON.parse(fs.readFileSync(file, "utf8"));
 const UNPUBLISHED = fs.existsSync("tools/unpublished.json")
@@ -100,22 +104,8 @@ function ancestors(decl, owner, missing) {
 
 function resolve(decl, owner, missing) {
   const out = structuredClone(decl);
+  out.tagName = RENAMED[decl.tagName] ?? decl.tagName;
   for (const key of MERGED) out[key] ??= [];
-  // a slot published without a name is the default slot, which the manifest schema spells ""; an
-  // event without one names nothing anyone can listen for
-  out.slots = out.slots.map((slot) => ({ ...slot, name: slot.name ?? "" }));
-  out.events = out.events.filter((event) => event.name);
-  // the analyzer can list an attribute twice -- once bare from a doc tag, once from its field -- so
-  // merge them, each filling in what the other leaves out
-  const attributes = new Map();
-  for (const attr of out.attributes)
-    attributes.set(attr.name, { ...attr, ...attributes.get(attr.name) });
-  out.attributes = [...attributes.values()];
-  // the analyzer's expanded type (`'primary' | 'outline' | ...`) where the declared one is an alias
-  // (`ButtonAppearance`) that means nothing without the library's sources
-  for (const entry of [...out.attributes, ...(out.members ?? [])]) {
-    if (entry.parsedType?.text) entry.type = { text: entry.parsedType.text };
-  }
   for (const { decl: ancestor, from } of ancestors(decl, owner, missing)) {
     for (const key of MERGED) {
       const have = new Set(out[key].map((entry) => entry.name));
@@ -125,6 +115,40 @@ function resolve(decl, owner, missing) {
         have.add(entry.name);
       }
     }
+  }
+  // Cleaned up after the merge, so what ancestors bring in is covered too. A slot published without
+  // a name is the default slot, which the manifest schema spells "" (UI5 spells it "default"); an
+  // event without one names nothing anyone can listen for.
+  out.slots = out.slots.map((slot) => ({
+    ...slot,
+    name: slot.name === "default" ? "" : (slot.name ?? ""),
+  }));
+  out.events = out.events.filter((event) => event.name);
+  // the analyzer can list an attribute twice -- once bare from a doc tag, once from its field -- so
+  // merge them, each filling in what the other leaves out
+  const attributes = new Map();
+  for (const attr of out.attributes)
+    attributes.set(attr.name, { ...attr, ...attributes.get(attr.name) });
+  out.attributes = [...attributes.values()];
+  // Vaadin's analyzer points an array or object property at the attribute Polymer would derive for
+  // it, yet leaves that attribute out of `attributes`. Such a property -- a grid's `items` -- is a
+  // declared input set as a property only, so it is listed as the element's own field, not as the
+  // plumbing of whichever of the element's mixins declares it.
+  for (const member of out.members ?? []) {
+    if (!member.attribute || attributes.has(member.attribute)) continue;
+    delete member.attribute;
+    delete member.inheritedFrom;
+  }
+  // the analyzer's expanded type (`'primary' | 'outline' | ...`) where the declared one is an alias
+  // (`ButtonAppearance`) that means nothing without the library's sources, and without Closure's
+  // non-null marker (`!Array<!GridItem>`), which a TypeScript reading does not expect
+  for (const entry of [...out.attributes, ...(out.members ?? [])]) {
+    if (entry.parsedType?.text) entry.type = { text: entry.parsedType.text };
+    if (entry.type?.text?.includes("!"))
+      entry.type = {
+        ...entry.type,
+        text: entry.type.text.replace(/!(?=[\w(])/g, ""),
+      };
   }
   return out;
 }
@@ -138,7 +162,8 @@ for (const name of PACKAGES) {
   for (const mod of owner.manifest.modules ?? []) {
     const declarations = (mod.declarations ?? [])
       .filter((decl) => decl.customElement && decl.tagName)
-      .map((decl) => resolve(decl, owner, missing));
+      .map((decl) => resolve(decl, owner, missing))
+      .filter((decl) => !REGISTERED || REGISTERED.has(decl.tagName));
     if (declarations.length)
       modules.push({
         kind: mod.kind,

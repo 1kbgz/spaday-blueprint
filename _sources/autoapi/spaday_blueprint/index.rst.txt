@@ -11,6 +11,7 @@ Submodules
    :maxdepth: 1
 
    /autoapi/spaday_blueprint/components/index
+   /autoapi/spaday_blueprint/example/index
 
 
 Attributes

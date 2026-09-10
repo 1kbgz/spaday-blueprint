@@ -1,0 +1,39 @@
+test_example
+============
+
+.. py:module:: test_example
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   test_example.request
+   test_example.run_ticks
+   test_example.test_example_serves_the_console
+   test_example.test_deploying_rolls_out_until_live
+   test_example.test_restart_and_acknowledge
+   test_example.test_a_saturated_service_raises_an_incident
+
+
+Module Contents
+---------------
+
+.. py:function:: request(method: str, path: str, **kwargs)
+   :async:
+
+
+.. py:function:: run_ticks(monkeypatch, ticks: int)
+
+   Run the release stream for ``ticks`` iterations.
+
+
+.. py:function:: test_example_serves_the_console()
+
+.. py:function:: test_deploying_rolls_out_until_live(monkeypatch)
+
+.. py:function:: test_restart_and_acknowledge()
+
+.. py:function:: test_a_saturated_service_raises_an_incident(monkeypatch)
+

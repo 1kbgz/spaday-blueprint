@@ -19,6 +19,8 @@ import path from "path";
 
 const CONDITIONS = ["browser", "import", "module", "default"];
 const SCRIPT = /\.m?js$/;
+// benchmarks, tests and stories ship in some dists and import dev-only packages
+const NOT_RUNTIME = /\.(bench|spec|test|stories)\.m?js$/;
 
 /** The JS file an "exports" value points at, preferring browser/import conditions. */
 function exportTarget(value) {
@@ -64,7 +66,7 @@ function publicModules(name) {
       const rel = path.relative(root, file).split(path.sep).join("/");
       if (!rel.startsWith(head) || !rel.endsWith(tail) || !SCRIPT.test(rel))
         continue;
-      if (rel.endsWith(".d.ts")) continue;
+      if (rel.endsWith(".d.ts") || NOT_RUNTIME.test(rel)) continue;
       const match = rel.slice(head.length, rel.length - tail.length);
       if (!match) continue; // `dist/index.js` against `dist/*/index.js`: no subpath at all
       modules.push([`${name}/${keyHead}${match}${keyTail}`, rel]);
@@ -76,6 +78,7 @@ function publicModules(name) {
 }
 
 export async function vendor(names, outdir, patches = {}) {
+  const unresolved = new Set();
   const entryPoints = {};
   const imports = {};
   for (const name of names) {
@@ -110,6 +113,26 @@ export async function vendor(names, outdir, patches = {}) {
     logLevel: "warning",
     plugins: [
       {
+        // a module that imports a package the library never installed (a benchmark helper and its
+        // dev-only harness) keeps that import rather than failing the build; it can only matter
+        // to a page that imports such a module, and the build names it
+        name: "dev-only-imports",
+        setup(build) {
+          build.onResolve({ filter: /^[^./]/ }, async (args) => {
+            if (args.pluginData?.probing) return undefined;
+            const result = await build.resolve(args.path, {
+              kind: args.kind,
+              resolveDir: args.resolveDir,
+              importer: args.importer,
+              pluginData: { probing: true },
+            });
+            if (!result.errors.length) return undefined;
+            unresolved.add(args.path);
+            return { path: args.path, external: true };
+          });
+        },
+      },
+      {
         name: "patches",
         setup(build) {
           build.onLoad({ filter: SCRIPT }, (args) => {
@@ -123,5 +146,9 @@ export async function vendor(names, outdir, patches = {}) {
       },
     ],
   });
+  if (unresolved.size)
+    console.warn(
+      `vendored modules keep unresolved imports: ${[...unresolved].join(", ")}`,
+    );
   return imports;
 }

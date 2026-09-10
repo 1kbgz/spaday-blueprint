@@ -105,6 +105,12 @@ function resolve(decl, owner, missing) {
   // event without one names nothing anyone can listen for
   out.slots = out.slots.map((slot) => ({ ...slot, name: slot.name ?? "" }));
   out.events = out.events.filter((event) => event.name);
+  // the analyzer can list an attribute twice -- once bare from a doc tag, once from its field -- so
+  // merge them, each filling in what the other leaves out
+  const attributes = new Map();
+  for (const attr of out.attributes)
+    attributes.set(attr.name, { ...attr, ...attributes.get(attr.name) });
+  out.attributes = [...attributes.values()];
   // the analyzer's expanded type (`'primary' | 'outline' | ...`) where the declared one is an alias
   // (`ButtonAppearance`) that means nothing without the library's sources
   for (const entry of [...out.attributes, ...(out.members ?? [])]) {

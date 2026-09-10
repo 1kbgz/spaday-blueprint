@@ -32,6 +32,13 @@ const includes = fs
 const VERSION = JSON.parse(
   fs.readFileSync("node_modules/@blueprintui/components/package.json", "utf8"),
 ).version;
+
+// the elements this bundle serves: the define-guard warns about any that another copy registered first
+const TAGS = JSON.parse(
+  fs.readFileSync("../spaday_blueprint/custom-elements.json", "utf8"),
+)
+  .modules.flatMap((mod) => mod.declarations.map((decl) => decl.tagName))
+  .filter(Boolean);
 const define = { __BLUEPRINT_VERSION__: JSON.stringify(VERSION) };
 // the version actually served, so a page holding a second copy can compare and refuse rather than
 // half-work
@@ -64,7 +71,7 @@ const BUNDLES = [
   },
   {
     stdin: {
-      contents: `import { restoreDefine } from "./define-guard.js";\n${includes}\nrestoreDefine();\n${publishVersion}`,
+      contents: `import { restoreDefine } from "./define-guard.js";\n${includes}\nrestoreDefine(${JSON.stringify(`@blueprintui/components ${VERSION}`)}, ${JSON.stringify(TAGS)});\n${publishVersion}`,
       resolveDir: ".",
       loader: "js",
     },
@@ -139,6 +146,23 @@ async function build() {
       `<script type="importmap">\n${map}\n    </script>`,
     );
   fs.writeFileSync("dist/index.html", html);
+
+  // the exact version of every library this package serves, read by the Python package as its
+  // ComponentPackage.provides, so spaday can reconcile it with the other packages on a page
+  const { dependencies = {} } = JSON.parse(
+    fs.readFileSync("package.json", "utf8"),
+  );
+  const served = Object.fromEntries(
+    Object.keys(dependencies).map((name) => [
+      name,
+      JSON.parse(fs.readFileSync(`node_modules/${name}/package.json`, "utf8"))
+        .version,
+    ]),
+  );
+  fs.writeFileSync(
+    "dist/versions.json",
+    `${JSON.stringify(served, null, 2)}\n`,
+  );
 
   // Copy servable assets to python extension (exclude esm/)
   fs.mkdirSync("../spaday_blueprint/extension", { recursive: true });

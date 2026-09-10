@@ -2,7 +2,7 @@
 import { restoreDefine } from "./define-guard.js";
 import "@blueprintui/components/include/all.js";
 
-restoreDefine();
+restoreDefine(`@blueprintui/components ${__BLUEPRINT_VERSION__}`);
 
 declare const __BLUEPRINT_VERSION__: string;
 

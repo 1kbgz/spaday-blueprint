@@ -85,11 +85,17 @@ export async function vendor(names, outdir, patches = {}) {
       imports[specifier] = `${name}/${rel.replace(SCRIPT, ".js")}`;
     }
     for (const [specifier, head] of prefixes) {
-      // the prefix covers the exact entries it would otherwise repeat
-      for (const key of Object.keys(imports)) {
-        if (key.startsWith(specifier)) delete imports[key];
+      // the prefix covers the exact entries that would resolve the same way; one it would resolve
+      // differently (`./*.js` onto `*/define.js` under a `./*/` prefix) has to stay
+      const target = `${name}/${head}`;
+      for (const [key, value] of Object.entries(imports)) {
+        if (
+          key.startsWith(specifier) &&
+          value === target + key.slice(specifier.length)
+        )
+          delete imports[key];
       }
-      imports[specifier] = `${name}/${head}`;
+      imports[specifier] = target;
     }
   }
   await esbuild.build({

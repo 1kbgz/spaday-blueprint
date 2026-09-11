@@ -3,10 +3,10 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="test_example" href="../test_example/index.html"><link rel="prev" title="test_all" href="../test_all/index.html">
+<link rel="index" title="Index" href="../../genindex.html"><link rel="search" title="Search" href="../../search.html"><link rel="next" title="spaday_blueprint" href="../spaday_blueprint/index.html"><link rel="prev" title="test_example" href="../test_example/index.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
-        <title>integration - spaday-blueprint v0.1.0</title>
+        <title>test_versions - spaday-blueprint v0.1.0</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
@@ -200,9 +200,9 @@
   <ul class="current">
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">API Reference</a><input aria-label="Toggle navigation of API Reference" checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../test_all/index.html">test_all</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/index.html">integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../test_example/index.html">test_example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../test_versions/index.html">test_versions</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">test_versions</a></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../spaday_blueprint/index.html">spaday_blueprint</a><input aria-label="Toggle navigation of spaday_blueprint" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../spaday_blueprint/components/index.html">spaday_blueprint.components</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../spaday_blueprint/example/index.html">spaday_blueprint.example</a></li>
@@ -230,7 +230,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="../../_sources/autoapi/integration/index.rst.txt" title="View this page">
+  <a class="muted-link" href="../../_sources/autoapi/test_versions/index.rst.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -248,45 +248,15 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="module-integration">
-<span id="integration"></span><h1>integration<a class="headerlink" href="#module-integration" title="Link to this heading">¶</a></h1>
-<p>A spaday page on spaday-blueprint, shared with a downstream library through the import map.</p>
-<p>The integration this exercises end to end:</p>
-<ul class="simple">
-<li><p>the generated catalog authored in Python and wired with spaday’s own state – two <code class="docutils literal notranslate"><span class="pre">BpButton</span></code>s
-drive a store field that a <code class="docutils literal notranslate"><span class="pre">BpBadge</span></code> reads;</p></li>
-<li><p>a downstream library that imports Blueprint by its bare specifiers, left as imports in its
-bundle, which the page’s import map resolves to spaday-blueprint’s copy, so nothing registers the
-same tags twice. It has no Python of its own beyond a schema-carrying <code class="xref py py-class docutils literal notranslate"><span class="pre">Component</span></code>
-and a <code class="xref py py-class docutils literal notranslate"><span class="pre">ComponentPackage</span></code> serving its bundle.</p></li>
-</ul>
-<p>Served for the browser tests; <code class="docutils literal notranslate"><span class="pre">/conformance.js</span></code> hands back the check that the package’s own
-bundle implements the catalog generated for it.</p>
+          <section id="module-test_versions">
+<span id="test-versions"></span><h1>test_versions<a class="headerlink" href="#module-test_versions" title="Link to this heading">¶</a></h1>
 <section id="attributes">
 <h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#integration.downstream_package" title="integration.downstream_package"><code class="xref py py-obj docutils literal notranslate"><span class="pre">downstream_package</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#test_versions.PACKAGE_JSON" title="test_versions.PACKAGE_JSON"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PACKAGE_JSON</span></code></a></p></td>
 <td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#integration.page" title="integration.page"><code class="xref py py-obj docutils literal notranslate"><span class="pre">page</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#integration.app" title="integration.app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">¶</a></h2>
-<div class="table-wrapper autosummary longtable docutils container">
-<table class="autosummary longtable docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#integration.DemoAction" title="integration.DemoAction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DemoAction</span></code></a></p></td>
-<td><p>The downstream library's element, bound from Python with no Python of its own.</p></td>
 </tr>
 </tbody>
 </table>
@@ -297,8 +267,8 @@ bundle implements the catalog generated for it.</p>
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#integration.conformance" title="integration.conformance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">conformance</span></code></a>(→ starlette.responses.PlainTextResponse)</p></td>
-<td><p>The browser-side check of spaday-blueprint's own bundle against its generated catalog.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#test_versions.test_the_package_records_the_js_versions_it_serves" title="test_versions.test_the_package_records_the_js_versions_it_serves"><code class="xref py py-obj docutils literal notranslate"><span class="pre">test_the_package_records_the_js_versions_it_serves</span></code></a>()</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
@@ -306,42 +276,14 @@ bundle implements the catalog generated for it.</p>
 </section>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading">¶</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="integration.DemoAction">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">integration.</span></span><span class="sig-name descname"><span class="pre">DemoAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">children</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">props</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attrs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#integration.DemoAction" title="Link to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">spaday.Component</span></code></p>
-<p>The downstream library’s element, bound from Python with no Python of its own.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="integration.DemoAction.tag">
-<span class="sig-name descname"><span class="pre">tag</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'demo-action'</span></em><a class="headerlink" href="#integration.DemoAction.tag" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="integration.DemoAction.schema">
-<span class="sig-name descname"><span class="pre">schema</span></span><a class="headerlink" href="#integration.DemoAction.schema" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
 <dl class="py data">
-<dt class="sig sig-object py" id="integration.downstream_package">
-<span class="sig-prename descclassname"><span class="pre">integration.</span></span><span class="sig-name descname"><span class="pre">downstream_package</span></span><a class="headerlink" href="#integration.downstream_package" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="integration.page">
-<span class="sig-prename descclassname"><span class="pre">integration.</span></span><span class="sig-name descname"><span class="pre">page</span></span><a class="headerlink" href="#integration.page" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="test_versions.PACKAGE_JSON">
+<span class="sig-prename descclassname"><span class="pre">test_versions.</span></span><span class="sig-name descname"><span class="pre">PACKAGE_JSON</span></span><a class="headerlink" href="#test_versions.PACKAGE_JSON" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="integration.conformance">
-<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">integration.</span></span><span class="sig-name descname"><span class="pre">conformance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">starlette.responses.PlainTextResponse</span></span></span><a class="headerlink" href="#integration.conformance" title="Link to this definition">¶</a></dt>
-<dd><p>The browser-side check of spaday-blueprint’s own bundle against its generated catalog.</p>
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="integration.app">
-<span class="sig-prename descclassname"><span class="pre">integration.</span></span><span class="sig-name descname"><span class="pre">app</span></span><a class="headerlink" href="#integration.app" title="Link to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="test_versions.test_the_package_records_the_js_versions_it_serves">
+<span class="sig-prename descclassname"><span class="pre">test_versions.</span></span><span class="sig-name descname"><span class="pre">test_the_package_records_the_js_versions_it_serves</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#test_versions.test_the_package_records_the_js_versions_it_serves" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -352,23 +294,23 @@ bundle implements the catalog generated for it.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../test_example/index.html">
+          <a class="next-page" href="../spaday_blueprint/index.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">test_example</div>
+                <div class="title">spaday_blueprint</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../test_all/index.html">
+          <a class="prev-page" href="../test_example/index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">test_all</div>
+                <div class="title">test_example</div>
                 
               </div>
             </a>
@@ -402,20 +344,12 @@ bundle implements the catalog generated for it.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">integration</a><ul>
+<li><a class="reference internal" href="#">test_versions</a><ul>
 <li><a class="reference internal" href="#attributes">Attributes</a></li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
 <li><a class="reference internal" href="#functions">Functions</a></li>
 <li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#integration.DemoAction"><code class="docutils literal notranslate"><span class="pre">DemoAction</span></code></a><ul>
-<li><a class="reference internal" href="#integration.DemoAction.tag"><code class="docutils literal notranslate"><span class="pre">DemoAction.tag</span></code></a></li>
-<li><a class="reference internal" href="#integration.DemoAction.schema"><code class="docutils literal notranslate"><span class="pre">DemoAction.schema</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#integration.downstream_package"><code class="docutils literal notranslate"><span class="pre">downstream_package</span></code></a></li>
-<li><a class="reference internal" href="#integration.page"><code class="docutils literal notranslate"><span class="pre">page</span></code></a></li>
-<li><a class="reference internal" href="#integration.conformance"><code class="docutils literal notranslate"><span class="pre">conformance()</span></code></a></li>
-<li><a class="reference internal" href="#integration.app"><code class="docutils literal notranslate"><span class="pre">app</span></code></a></li>
+<li><a class="reference internal" href="#test_versions.PACKAGE_JSON"><code class="docutils literal notranslate"><span class="pre">PACKAGE_JSON</span></code></a></li>
+<li><a class="reference internal" href="#test_versions.test_the_package_records_the_js_versions_it_serves"><code class="docutils literal notranslate"><span class="pre">test_the_package_records_the_js_versions_it_serves()</span></code></a></li>
 </ul>
 </li>
 </ul>

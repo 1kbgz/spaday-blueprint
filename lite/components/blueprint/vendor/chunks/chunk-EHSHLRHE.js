@@ -1,0 +1,1 @@
+var a={name:"menu",viewBox:36,type:{default:'<path d="m32 29h-28a1 1 0 0 1 0-2h28a1 1 0 0 1 0 2z"/><path d="m32 19h-28a1 1 0 0 1 0-2h28a1 1 0 0 1 0 2z"/><path d="m32 9h-28a1 1 0 0 1 0-2h28a1 1 0 0 1 0 2z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(a)):e?.add(a);export{a};

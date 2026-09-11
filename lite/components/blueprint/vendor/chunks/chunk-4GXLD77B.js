@@ -1,0 +1,1 @@
+var t={name:"redo",viewBox:36,type:{default:'<path d="m24 4.22a1 1 0 0 0 -1.41 1.42l5.56 5.49h-13a11 11 0 0 0 -5.08 20.87 1 1 0 0 0 .93-1.82 9 9 0 0 1 -5-8 9.08 9.08 0 0 1 9.13-9h13l-5.54 5.48a1 1 0 0 0 1.41 1.34l8-7.91z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(t)):e?.add(t);export{t as a};

@@ -1,0 +1,1 @@
+import{a as t}from"../../../../chunks/chunk-EKYZBPIB.js";import"../../../../chunks/chunk-JEQEBIGY.js";import"../../../../chunks/chunk-IHRIPF4J.js";import"../../../../chunks/chunk-3HYPADOP.js";import"../../../../chunks/chunk-TWABSY6V.js";import{t as e}from"../../../../chunks/chunk-WTBX5XZO.js";import"../../../../chunks/chunk-CMGAA5BS.js";e("bp-button-resize",t);

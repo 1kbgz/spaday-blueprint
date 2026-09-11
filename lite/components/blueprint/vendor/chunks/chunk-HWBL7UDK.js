@@ -1,0 +1,1 @@
+import{a as s,b as p}from"./chunk-IAK2ZKPF.js";import{c as t}from"./chunk-3HYPADOP.js";var e=new CSSStyleSheet;e.replaceSync("");var r=class extends p{static{this.properties={type:{type:String}}}static get styles(){return[t,s,e]}constructor(){super(),this.type="tel"}};export{r as a};

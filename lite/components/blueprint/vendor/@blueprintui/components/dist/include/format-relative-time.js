@@ -1,0 +1,1 @@
+import{a as m}from"../../../../chunks/chunk-JYSWCSXG.js";import"../../../../chunks/chunk-3HYPADOP.js";import"../../../../chunks/chunk-TWABSY6V.js";import{t as e}from"../../../../chunks/chunk-WTBX5XZO.js";import"../../../../chunks/chunk-CMGAA5BS.js";e("bp-format-relative-time",m);

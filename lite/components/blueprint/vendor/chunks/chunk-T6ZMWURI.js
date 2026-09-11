@@ -1,0 +1,1 @@
+var t={name:"arrow",viewBox:36,type:{default:'<path d="m27.66 15.61-9.66-9.61-9.66 9.61a1 1 0 1 0 1.41 1.39l7.25-7.19v19.13a1 1 0 1 0 2 0v-19.13l7.25 7.19a1 1 0 0 0 1.41-1.42z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(t)):e?.add(t);export{t as a};

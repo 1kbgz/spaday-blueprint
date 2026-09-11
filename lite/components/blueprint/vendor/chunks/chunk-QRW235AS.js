@@ -1,0 +1,1 @@
+var t={name:"dot-circle",viewBox:36,type:{default:'<path d="m18 11a7 7 0 1 1 -7 7 7 7 0 0 1 7-7"/><path d="m18 34a16 16 0 1 1 16-16 16 16 0 0 1 -16 16zm0-30a14 14 0 1 0 14 14 14 14 0 0 0 -14-14z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(t)):e?.add(t);export{t as a};

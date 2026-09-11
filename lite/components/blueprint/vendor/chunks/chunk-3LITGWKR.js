@@ -1,0 +1,1 @@
+var n={name:"node",viewBox:36,type:{default:'<path d="m18 30.66-11-6.33v-12.66l11-6.33 11 6.33v12.66zm-9-7.48 9 5.17 9-5.17v-10.36l-9-5.17-9 5.17z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(n)):e?.add(n);export{n as a};

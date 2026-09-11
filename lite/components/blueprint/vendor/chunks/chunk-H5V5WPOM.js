@@ -1,0 +1,1 @@
+var n={name:"window-max",viewBox:36,type:{default:'<path d="m27.89 9h-20a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2v-14a2 2 0 0 0 -2-2zm-20 16v-14h20v14z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(n)):e?.add(n);export{n as a};

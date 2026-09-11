@@ -1,0 +1,1 @@
+import{a,b,c,d}from"../../../../chunks/chunk-2NPQDNMG.js";import"../../../../chunks/chunk-IHRIPF4J.js";import"../../../../chunks/chunk-3HYPADOP.js";import"../../../../chunks/chunk-TWABSY6V.js";import"../../../../chunks/chunk-WTBX5XZO.js";import"../../../../chunks/chunk-CMGAA5BS.js";export{c as BpTab,b as BpTabList,a as BpTabPanel,d as BpTabs};

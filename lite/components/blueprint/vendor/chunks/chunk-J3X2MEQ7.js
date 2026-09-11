@@ -1,0 +1,1 @@
+import{a as i}from"./chunk-E5YK2CWM.js";import{b as t}from"./chunk-DEWTUGLJ.js";import{a as p}from"./chunk-AH37OH7Y.js";import{s as o,t as m}from"./chunk-WTBX5XZO.js";o("bp-icon",p),o("bp-button-icon",t),m("bp-time",i);

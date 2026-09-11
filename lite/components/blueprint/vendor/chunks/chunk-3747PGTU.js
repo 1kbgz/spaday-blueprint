@@ -1,0 +1,1 @@
+import{a as r,b as s}from"./chunk-5X7TTQFE.js";import{a as p}from"./chunk-7HYFRYZQ.js";import{s as o,t as e}from"./chunk-WTBX5XZO.js";o("bp-progress-dot",p),e("bp-chat-message",r),e("bp-chat-group",s);

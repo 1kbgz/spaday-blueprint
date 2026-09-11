@@ -3,7 +3,7 @@
   <head><meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html"><link rel="prev" title="spaday_blueprint.components" href="../components/index.html">
+<link rel="index" title="Index" href="../../../genindex.html"><link rel="search" title="Search" href="../../../search.html"><link rel="next" title="spaday_blueprint.gallery" href="../gallery/index.html"><link rel="prev" title="spaday_blueprint.components" href="../components/index.html">
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>spaday_blueprint.example - spaday-blueprint v0.1.0</title>
@@ -202,10 +202,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../test_all/index.html">test_all</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../integration/index.html">integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../test_example/index.html">test_example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../test_gallery/index.html">test_gallery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../test_versions/index.html">test_versions</a></li>
 <li class="toctree-l2 current has-children"><a class="reference internal" href="../index.html">spaday_blueprint</a><input aria-label="Toggle navigation of spaday_blueprint" checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../components/index.html">spaday_blueprint.components</a></li>
 <li class="toctree-l3 current current-page"><a class="current reference internal" href="#">spaday_blueprint.example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gallery/index.html">spaday_blueprint.gallery</a></li>
 </ul>
 </li>
 </ul>
@@ -303,7 +305,10 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#spaday_blueprint.example.styles" title="spaday_blueprint.example.styles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">styles</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spaday_blueprint.example.app" title="spaday_blueprint.example.app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spaday_blueprint.example.initial_store" title="spaday_blueprint.example.initial_store"><code class="xref py py-obj docutils literal notranslate"><span class="pre">initial_store</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spaday_blueprint.example.app" title="spaday_blueprint.example.app"><code class="xref py py-obj docutils literal notranslate"><span class="pre">app</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -637,31 +642,52 @@ incident.</p>
 <span class="sig-prename descclassname"><span class="pre">spaday_blueprint.example.</span></span><span class="sig-name descname"><span class="pre">styles</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">Multiline-String</span></em><a class="headerlink" href="#spaday_blueprint.example.styles" title="Link to this definition">¶</a></dt>
 <dd><details><summary>Show Value</summary><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">"""</span>
 <span class="sd">&lt;style&gt;</span>
-<span class="sd">  body { margin: 0; background: var(--bp-layer-background-100); color: var(--bp-text-color-500); font-family: var(--bp-text-font); }</span>
-<span class="sd">  spa-nav { justify-content: space-between; }</span>
+<span class="sd">  body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 12% 0, color-mix(in srgb,</span>
+<span class="sd">    var(--bp-status-accent-background-200) 16%, transparent), transparent 30rem), var(--bp-layer-background-100);</span>
+<span class="sd">    color: var(--bp-text-color-500); font-family: Inter, var(--bp-text-font), ui-sans-serif, system-ui, sans-serif; }</span>
+<span class="sd">  spa-nav { position: sticky; z-index: 20; top: 0; justify-content: space-between; border-bottom: 1px solid var(--bp-object-border-color-100);</span>
+<span class="sd">    background: var(--bp-layer-background-200); box-shadow: 0 8px 28px rgba(15,23,42,.06);</span>
+<span class="sd">    backdrop-filter: blur(14px); }</span>
 <span class="sd">  .dark-toggle { display: inline-flex; align-items: center; gap: .5rem; }</span>
 <span class="sd">  /* shown without an invoking button to anchor to, so placed against the viewport */</span>
 <span class="sd">  #toast { inset: auto 0 0 auto; }</span>
-<span class="sd">  .brand { font-size: 1.1rem; white-space: nowrap; }</span>
-<span class="sd">  .page { box-sizing: border-box; width: 100%; max-width: 72rem; margin: 0 auto; padding: 1.5rem 1rem; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 1rem; }</span>
-<span class="sd">  .panel { display: grid; gap: 1rem; padding-block: 1rem; }</span>
+<span class="sd">  .brand { font-size: 1.05rem; letter-spacing: -.015em; white-space: nowrap; }</span>
+<span class="sd">  .page { box-sizing: border-box; width: 100%; max-width: 78rem; margin: 0 auto; padding: 3.5rem 1.25rem 5rem; display: grid;</span>
+<span class="sd">    grid-template-columns: minmax(0, 1fr); align-content: start; gap: 1rem; }</span>
+<span class="sd">  .hero { padding: 1rem 0 1.25rem; }</span>
+<span class="sd">  .eyebrow { margin: 0; color: var(--bp-status-accent-background-200); font-size: .72rem; font-weight: 800; letter-spacing: .16em; }</span>
+<span class="sd">  .hero-title { display: flex; align-items: center; gap: .85rem; margin-top: .4rem; }</span>
+<span class="sd">  .hero h1 { margin: 0; font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: .98; letter-spacing: -.055em; }</span>
+<span class="sd">  .lede { max-width: 44rem; margin: 1rem 0; color: var(--bp-text-color-400); font-size: 1.08rem; line-height: 1.6; }</span>
+<span class="sd">  .hero-meta { display: flex; flex-wrap: wrap; gap: .55rem; }</span>
+<span class="sd">  .hero-meta &gt; span { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .7rem; border: 1px solid var(--bp-object-border-color-100);</span>
+<span class="sd">    border-radius: 999px; background: color-mix(in srgb, var(--bp-layer-background-200) 90%, transparent); font-size: .82rem; }</span>
+<span class="sd">  bp-tabs { display: block; padding: 1rem 1.2rem 1.3rem; border: 1px solid var(--bp-object-border-color-100); border-radius: 1.1rem;</span>
+<span class="sd">    background: var(--bp-layer-background-200); box-shadow: 0 22px 55px rgba(15,23,42,.09); }</span>
+<span class="sd">  .panel { display: grid; gap: 1rem; padding-block: 1.25rem .25rem; }</span>
 <span class="sd">  .summary { color: var(--bp-text-color-500); }</span>
 <span class="sd">  .muted { color: var(--bp-text-color-400); }</span>
 <span class="sd">  .wrap { white-space: normal; }</span>
 <span class="sd">  .services { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; }</span>
+<span class="sd">  .service { display: block; padding: 1rem; border: 1px solid var(--bp-object-border-color-100); border-radius: .85rem;</span>
+<span class="sd">    background: var(--bp-layer-background-100); box-shadow: 0 8px 24px rgba(15,23,42,.045); transition: transform .18s ease, box-shadow .18s ease; }</span>
+<span class="sd">  .service:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(15,23,42,.08); }</span>
 <span class="sd">  .service-header, .service-footer { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }</span>
-<span class="sd">  .service-body { display: flex; align-items: center; gap: 1.25rem; }</span>
+<span class="sd">  .service-body { display: flex; align-items: center; gap: 1.25rem; padding-block: 1rem; }</span>
 <span class="sd">  .service-body dl { display: grid; grid-template-columns: auto 1fr; gap: .25rem .75rem; margin: 0; }</span>
 <span class="sd">  .service-body dt { color: var(--bp-text-color-400); }</span>
 <span class="sd">  .service-body dd { margin: 0; font-variant-numeric: tabular-nums; white-space: nowrap; }</span>
 <span class="sd">  h3 { margin: 0; }</span>
 <span class="sd">  .rollouts, .incidents { display: grid; gap: .5rem; }</span>
-<span class="sd">  .rollout { display: grid; grid-template-columns: minmax(12rem, auto) 1fr auto; align-items: center; gap: 1rem; }</span>
+<span class="sd">  .rollout { display: grid; grid-template-columns: minmax(12rem, auto) 1fr auto; align-items: center; gap: 1rem; padding: .85rem 1rem;</span>
+<span class="sd">    border: 1px solid var(--bp-object-border-color-100); border-radius: .7rem; background: var(--bp-layer-background-100); }</span>
 <span class="sd">  .incidents bp-alert { display: block; }</span>
-<span class="sd">  .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; }</span>
+<span class="sd">  .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 1.5rem; padding: .5rem; }</span>
 <span class="sd">  .form-grid .wide { grid-column: 1 / -1; }</span>
 <span class="sd">  @media (max-width: 720px) {</span>
-<span class="sd">    .form-grid { grid-template-columns: 1fr; }</span>
+<span class="sd">    .page { padding: 1.75rem .75rem 3rem; }</span>
+<span class="sd">    .hero-title { align-items: flex-start; flex-direction: column; }</span>
+<span class="sd">    .form-grid { grid-template-columns: 1fr; padding-inline: 0; }</span>
 <span class="sd">    .rollout { grid-template-columns: 1fr; }</span>
 <span class="sd">  }</span>
 <span class="sd">&lt;/style&gt;</span>
@@ -669,6 +695,11 @@ incident.</p>
 </pre></div>
 </div>
 </details></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="spaday_blueprint.example.initial_store">
+<span class="sig-prename descclassname"><span class="pre">spaday_blueprint.example.</span></span><span class="sig-name descname"><span class="pre">initial_store</span></span><a class="headerlink" href="#spaday_blueprint.example.initial_store" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="spaday_blueprint.example.app">
@@ -683,7 +714,15 @@ incident.</p>
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="../gallery/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">spaday_blueprint.gallery</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="../components/index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
@@ -781,6 +820,7 @@ incident.</p>
 <li><a class="reference internal" href="#spaday_blueprint.example.toast"><code class="docutils literal notranslate"><span class="pre">toast</span></code></a></li>
 <li><a class="reference internal" href="#spaday_blueprint.example.page"><code class="docutils literal notranslate"><span class="pre">page</span></code></a></li>
 <li><a class="reference internal" href="#spaday_blueprint.example.styles"><code class="docutils literal notranslate"><span class="pre">styles</span></code></a></li>
+<li><a class="reference internal" href="#spaday_blueprint.example.initial_store"><code class="docutils literal notranslate"><span class="pre">initial_store</span></code></a></li>
 <li><a class="reference internal" href="#spaday_blueprint.example.app"><code class="docutils literal notranslate"><span class="pre">app</span></code></a></li>
 </ul>
 </li>

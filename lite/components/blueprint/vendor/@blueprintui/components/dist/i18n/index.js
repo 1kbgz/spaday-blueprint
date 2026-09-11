@@ -1,0 +1,1 @@
+import{ba as e}from"../../../../chunks/chunk-3HYPADOP.js";import"../../../../chunks/chunk-TWABSY6V.js";import"../../../../chunks/chunk-WTBX5XZO.js";import"../../../../chunks/chunk-CMGAA5BS.js";export{e as I18nService};

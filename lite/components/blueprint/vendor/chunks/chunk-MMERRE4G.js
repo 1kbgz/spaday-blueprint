@@ -1,0 +1,1 @@
+var t={name:"caret",viewBox:36,type:{default:'<path d="m29.52 22.52-11.52-11.92-11.52 11.92a1.7 1.7 0 0 0 2.45 2.36l9.07-9.39 9.08 9.39a1.7 1.7 0 0 0 2.45-2.36z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(t)):e?.add(t);export{t as a};

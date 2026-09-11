@@ -1,0 +1,1 @@
+import{a as r,b as e,c as a,d as i}from"./chunk-4IGIK6HT.js";import{a as c}from"./chunk-TRO3ABYT.js";import{a as p}from"./chunk-AH37OH7Y.js";import{s as n,t as o}from"./chunk-WTBX5XZO.js";n("bp-icon",p),n("bp-button-expand",c),o("bp-accordion",r),o("bp-accordion-panel",e),o("bp-accordion-content",a),o("bp-accordion-header",i);

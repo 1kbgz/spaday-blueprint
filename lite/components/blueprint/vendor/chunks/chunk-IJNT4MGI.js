@@ -1,0 +1,1 @@
+var t={name:"close",viewBox:36,type:{default:'<path d="m19.41 18 8.29-8.29a1 1 0 0 0 -1.41-1.41l-8.29 8.29-8.29-8.3a1 1 0 0 0 -1.42 1.42l8.3 8.29-8.3 8.29a1 1 0 1 0 1.41 1.41l8.3-8.29 8.29 8.29a1 1 0 0 0 1.41-1.41z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(t)):e?.add(t);export{t as a};

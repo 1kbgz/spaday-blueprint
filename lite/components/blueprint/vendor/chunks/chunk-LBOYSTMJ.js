@@ -1,0 +1,1 @@
+var e={name:"window-min",viewBox:36,type:{default:'<path d="m27 27h-18a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},n=customElements.get("bp-icon");n?customElements.whenDefined("bp-icon").then(()=>n.add(e)):n?.add(e);export{e as a};

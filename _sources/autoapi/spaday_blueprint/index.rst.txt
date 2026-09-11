@@ -12,6 +12,7 @@ Submodules
 
    /autoapi/spaday_blueprint/components/index
    /autoapi/spaday_blueprint/example/index
+   /autoapi/spaday_blueprint/gallery/index
 
 
 Attributes

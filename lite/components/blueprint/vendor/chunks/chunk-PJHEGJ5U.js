@@ -1,0 +1,1 @@
+var n={name:"ban",viewBox:36,type:{default:'<path d="m18 2a16 16 0 1 0 16 16 16 16 0 0 0 -16-16zm-14 16a13.93 13.93 0 0 1 3.43-9.15l19.72 19.72a14 14 0 0 1 -23.15-10.57zm24.57 9.15-19.72-19.72a14 14 0 0 1 19.72 19.72z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(n)):e?.add(n);export{n as a};

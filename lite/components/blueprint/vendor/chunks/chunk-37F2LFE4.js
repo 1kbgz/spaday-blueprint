@@ -1,0 +1,1 @@
+var n={name:"view-columns",viewBox:36,type:{default:'<path d="m31 5h-26a2 2 0 0 0 -2 2v22a2 2 0 0 0 2 2h26a2 2 0 0 0 2-2v-22a2 2 0 0 0 -2-2zm-18 24h-8v-22h8zm10 0h-8v-22h8z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(n)):e?.add(n);export{n as a};

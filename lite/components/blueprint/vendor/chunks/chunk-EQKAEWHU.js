@@ -1,0 +1,1 @@
+var c={name:"ellipsis-vertical",viewBox:36,type:{default:'<circle cx="18" cy="4.9" r="2.9"/><circle cx="18" cy="18" r="2.9"/><circle cx="18" cy="31.1" r="2.9"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(c)):e?.add(c);export{c as a};

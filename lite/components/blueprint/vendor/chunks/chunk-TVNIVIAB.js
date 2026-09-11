@@ -1,0 +1,1 @@
+var t={name:"filter-2",viewBox:36,type:{default:'<path d="m33 11h-30a1 1 0 0 0 0 2h30a1 1 0 0 0 0-2z"/><path d="m28 17h-20a1 1 0 0 0 0 2h20a1 1 0 0 0 0-2z"/><path d="m23 23h-10a1 1 0 0 0 0 2h10a1 1 0 0 0 0-2z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(t)):e?.add(t);export{t as a};

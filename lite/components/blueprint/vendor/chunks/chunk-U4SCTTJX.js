@@ -1,0 +1,1 @@
+var n={name:"minus",viewBox:36,type:{default:'<path d="m26 17h-16a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(n)):e?.add(n);export{n as a};

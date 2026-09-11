@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>spaday-blueprint in Pyodide</title>
+    <link rel="stylesheet" href="./components/blueprint/css/blueprint.css" />
+    <script type="importmap">
+{
+  "imports": {
+    "@blueprintui/components/internals": "./components/blueprint/vendor/@blueprintui/components/dist/internals/index.js",
+    "@blueprintui/components/accordion": "./components/blueprint/vendor/@blueprintui/components/dist/accordion/index.js",
+    "@blueprintui/components/alert": "./components/blueprint/vendor/@blueprintui/components/dist/alert/index.js",
+    "@blueprintui/components/avatar": "./components/blueprint/vendor/@blueprintui/components/dist/avatar/index.js",
+    "@blueprintui/components/badge": "./components/blueprint/vendor/@blueprintui/components/dist/badge/index.js",
+    "@blueprintui/components/breadcrumb": "./components/blueprint/vendor/@blueprintui/components/dist/breadcrumb/index.js",
+    "@blueprintui/components/button": "./components/blueprint/vendor/@blueprintui/components/dist/button/index.js",
+    "@blueprintui/components/button-copy": "./components/blueprint/vendor/@blueprintui/components/dist/button-copy/index.js",
+    "@blueprintui/components/button-expand": "./components/blueprint/vendor/@blueprintui/components/dist/button-expand/index.js",
+    "@blueprintui/components/button-group": "./components/blueprint/vendor/@blueprintui/components/dist/button-group/index.js",
+    "@blueprintui/components/button-handle": "./components/blueprint/vendor/@blueprintui/components/dist/button-handle/index.js",
+    "@blueprintui/components/button-icon": "./components/blueprint/vendor/@blueprintui/components/dist/button-icon/index.js",
+    "@blueprintui/components/button-resize": "./components/blueprint/vendor/@blueprintui/components/dist/button-resize/index.js",
+    "@blueprintui/components/button-sort": "./components/blueprint/vendor/@blueprintui/components/dist/button-sort/index.js",
+    "@blueprintui/components/card": "./components/blueprint/vendor/@blueprintui/components/dist/card/index.js",
+    "@blueprintui/components/chat": "./components/blueprint/vendor/@blueprintui/components/dist/chat/index.js",
+    "@blueprintui/components/checkbox": "./components/blueprint/vendor/@blueprintui/components/dist/checkbox/index.js",
+    "@blueprintui/components/color": "./components/blueprint/vendor/@blueprintui/components/dist/color/index.js",
+    "@blueprintui/components/date": "./components/blueprint/vendor/@blueprintui/components/dist/date/index.js",
+    "@blueprintui/components/dialog": "./components/blueprint/vendor/@blueprintui/components/dist/dialog/index.js",
+    "@blueprintui/components/divider": "./components/blueprint/vendor/@blueprintui/components/dist/divider/index.js",
+    "@blueprintui/components/drawer": "./components/blueprint/vendor/@blueprintui/components/dist/drawer/index.js",
+    "@blueprintui/components/dropdown": "./components/blueprint/vendor/@blueprintui/components/dist/dropdown/index.js",
+    "@blueprintui/components/file": "./components/blueprint/vendor/@blueprintui/components/dist/file/index.js",
+    "@blueprintui/components/format-bytes": "./components/blueprint/vendor/@blueprintui/components/dist/format-bytes/index.js",
+    "@blueprintui/components/format-datetime": "./components/blueprint/vendor/@blueprintui/components/dist/format-datetime/index.js",
+    "@blueprintui/components/format-number": "./components/blueprint/vendor/@blueprintui/components/dist/format-number/index.js",
+    "@blueprintui/components/format-relative-time": "./components/blueprint/vendor/@blueprintui/components/dist/format-relative-time/index.js",
+    "@blueprintui/components/format-token": "./components/blueprint/vendor/@blueprintui/components/dist/format-token/index.js",
+    "@blueprintui/components/forms": "./components/blueprint/vendor/@blueprintui/components/dist/forms/index.js",
+    "@blueprintui/components/header": "./components/blueprint/vendor/@blueprintui/components/dist/header/index.js",
+    "@blueprintui/components/i18n": "./components/blueprint/vendor/@blueprintui/components/dist/i18n/index.js",
+    "@blueprintui/components/input": "./components/blueprint/vendor/@blueprintui/components/dist/input/index.js",
+    "@blueprintui/components/internals/types": "./components/blueprint/vendor/@blueprintui/components/dist/internals/types/index.js",
+    "@blueprintui/components/menu": "./components/blueprint/vendor/@blueprintui/components/dist/menu/index.js",
+    "@blueprintui/components/month": "./components/blueprint/vendor/@blueprintui/components/dist/month/index.js",
+    "@blueprintui/components/nav": "./components/blueprint/vendor/@blueprintui/components/dist/nav/index.js",
+    "@blueprintui/components/number": "./components/blueprint/vendor/@blueprintui/components/dist/number/index.js",
+    "@blueprintui/components/number-stepper": "./components/blueprint/vendor/@blueprintui/components/dist/number-stepper/index.js",
+    "@blueprintui/components/page": "./components/blueprint/vendor/@blueprintui/components/dist/page/index.js",
+    "@blueprintui/components/pagination": "./components/blueprint/vendor/@blueprintui/components/dist/pagination/index.js",
+    "@blueprintui/components/panel": "./components/blueprint/vendor/@blueprintui/components/dist/panel/index.js",
+    "@blueprintui/components/password": "./components/blueprint/vendor/@blueprintui/components/dist/password/index.js",
+    "@blueprintui/components/pin": "./components/blueprint/vendor/@blueprintui/components/dist/pin/index.js",
+    "@blueprintui/components/progress-bar": "./components/blueprint/vendor/@blueprintui/components/dist/progress-bar/index.js",
+    "@blueprintui/components/progress-circle": "./components/blueprint/vendor/@blueprintui/components/dist/progress-circle/index.js",
+    "@blueprintui/components/progress-dot": "./components/blueprint/vendor/@blueprintui/components/dist/progress-dot/index.js",
+    "@blueprintui/components/radio": "./components/blueprint/vendor/@blueprintui/components/dist/radio/index.js",
+    "@blueprintui/components/range": "./components/blueprint/vendor/@blueprintui/components/dist/range/index.js",
+    "@blueprintui/components/rating": "./components/blueprint/vendor/@blueprintui/components/dist/rating/index.js",
+    "@blueprintui/components/search": "./components/blueprint/vendor/@blueprintui/components/dist/search/index.js",
+    "@blueprintui/components/select": "./components/blueprint/vendor/@blueprintui/components/dist/select/index.js",
+    "@blueprintui/components/skeleton": "./components/blueprint/vendor/@blueprintui/components/dist/skeleton/index.js",
+    "@blueprintui/components/stepper": "./components/blueprint/vendor/@blueprintui/components/dist/stepper/index.js",
+    "@blueprintui/components/switch": "./components/blueprint/vendor/@blueprintui/components/dist/switch/index.js",
+    "@blueprintui/components/tabs": "./components/blueprint/vendor/@blueprintui/components/dist/tabs/index.js",
+    "@blueprintui/components/tag": "./components/blueprint/vendor/@blueprintui/components/dist/tag/index.js",
+    "@blueprintui/components/telephone": "./components/blueprint/vendor/@blueprintui/components/dist/telephone/index.js",
+    "@blueprintui/components/textarea": "./components/blueprint/vendor/@blueprintui/components/dist/textarea/index.js",
+    "@blueprintui/components/time": "./components/blueprint/vendor/@blueprintui/components/dist/time/index.js",
+    "@blueprintui/components/toast": "./components/blueprint/vendor/@blueprintui/components/dist/toast/index.js",
+    "@blueprintui/components/toggletip": "./components/blueprint/vendor/@blueprintui/components/dist/toggletip/index.js",
+    "@blueprintui/components/tooltip": "./components/blueprint/vendor/@blueprintui/components/dist/tooltip/index.js",
+    "@blueprintui/components/tree": "./components/blueprint/vendor/@blueprintui/components/dist/tree/index.js",
+    "@blueprintui/components": "./components/blueprint/vendor/@blueprintui/components/dist/index.js",
+    "@blueprintui/components/include/": "./components/blueprint/vendor/@blueprintui/components/dist/include/",
+    "@blueprintui/icons/include": "./components/blueprint/vendor/@blueprintui/icons/dist/include.js",
+    "@blueprintui/icons/include.js": "./components/blueprint/vendor/@blueprintui/icons/dist/include.js",
+    "@blueprintui/icons/internals": "./components/blueprint/vendor/@blueprintui/icons/dist/internals/index.js",
+    "@blueprintui/icons/internals/index.js": "./components/blueprint/vendor/@blueprintui/icons/dist/internals/index.js",
+    "@blueprintui/icons": "./components/blueprint/vendor/@blueprintui/icons/dist/index.js",
+    "@blueprintui/icons/icon": "./components/blueprint/vendor/@blueprintui/icons/dist/icon/index.js",
+    "@blueprintui/icons/shapes": "./components/blueprint/vendor/@blueprintui/icons/dist/shapes/index.js",
+    "@blueprintui/icons/shapes/": "./components/blueprint/vendor/@blueprintui/icons/dist/shapes/"
+  }
+}
+    </script>
+    <style>
+      #pyodide-status {
+        position: sticky;
+        z-index: 10000;
+        top: 0;
+        box-sizing: border-box;
+        min-height: 3rem;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #cbd5e1;
+        color: #475569;
+        background: #fffffff2;
+        font:
+          14px/1.4 system-ui,
+          sans-serif;
+        backdrop-filter: blur(12px);
+      }
+      #pyodide-error {
+        margin: 1rem;
+        color: #b91c1c;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="pyodide-status">Loading Python in the browser…</div>
+    <div id="example-root"></div>
+    <pre id="pyodide-error" hidden></pre>
+    <script type="module">
+      import {
+        connectStore,
+        init,
+        mount,
+        Store,
+      } from "./runtime/spaday/cdn/index.js";
+      import "./components/blueprint/cdn/index.js";
+      import * as transports from "./runtime/spaday/transports/cdn/index.js";
+
+      const status = document.querySelector("#pyodide-status");
+      const exampleName =
+        new URL(location.href).searchParams.get("example") === "gallery"
+          ? "gallery"
+          : "example";
+      document.title = `spaday-blueprint ${exampleName} in Pyodide`;
+      const pendingEndpoints = new Map();
+      let nextEndpointId = 0;
+      let receiveWires = () => {};
+
+      function fail(error) {
+        status.textContent = "Unable to start";
+        const output = document.querySelector("#pyodide-error");
+        output.hidden = false;
+        output.textContent = String(error);
+      }
+
+      try {
+        await init({ module_or_path: "./runtime/spaday/pkg/spaday_bg.wasm" });
+        if (exampleName === "example") {
+          await transports.wasm.default({
+            module_or_path:
+              "./runtime/spaday/transports/pkg/transports_bg.wasm",
+          });
+        }
+
+        const worker = new Worker(
+          `./pyodide-worker.js?example=${exampleName}`,
+          { type: "module" },
+        );
+        const nativeFetch = globalThis.fetch.bind(globalThis);
+        globalThis.fetch = async (input, options = {}) => {
+          const url = new URL(
+            input instanceof Request ? input.url : input,
+            location.href,
+          );
+          if (exampleName !== "example" || !url.pathname.startsWith("/api/"))
+            return nativeFetch(input, options);
+
+          const id = ++nextEndpointId;
+          const response = new Promise((resolve) => {
+            pendingEndpoints.set(id, resolve);
+          });
+          worker.postMessage({
+            type: "endpoint",
+            id,
+            path: url.pathname,
+            body: options.body ? JSON.parse(String(options.body)) : null,
+          });
+          return response;
+        };
+
+        worker.addEventListener("message", (event) => {
+          if (event.data.type === "status")
+            status.textContent = event.data.message;
+          if (event.data.type === "error") fail(event.data.message);
+          if (event.data.type === "wires") receiveWires(event.data.wires);
+          if (event.data.type === "endpoint") {
+            receiveWires(event.data.wires);
+            const resolve = pendingEndpoints.get(event.data.id);
+            if (resolve) {
+              pendingEndpoints.delete(event.data.id);
+              resolve(
+                new Response(JSON.stringify(event.data.body), {
+                  status: event.data.status,
+                  headers: { "content-type": "application/json" },
+                }),
+              );
+            }
+          }
+          if (event.data.type === "snapshot") {
+            const {
+              tree,
+              style,
+              store: initialStore,
+              wire,
+              wires,
+            } = event.data.payload;
+            document.head.insertAdjacentHTML("beforeend", style);
+            const store = new Store(initialStore);
+            if (wire) {
+              const client = new transports.Client();
+              const link = connectStore(
+                store,
+                client,
+                (frame) => worker.postMessage({ type: "wire", frame }),
+                transports,
+              );
+              receiveWires = (frames) => {
+                for (const frame of frames) link.receive(frame);
+              };
+              receiveWires(wires);
+              window.setInterval(
+                () => worker.postMessage({ type: "flush" }),
+                100,
+              );
+            }
+            mount(document.querySelector("#example-root"), tree, store);
+            status.textContent = `Ready · Python ${exampleName} running in this browser`;
+            document.documentElement.dataset.ready = "true";
+          }
+        });
+        worker.postMessage({ type: "start" });
+      } catch (error) {
+        fail(error);
+      }
+    </script>
+  </body>
+</html>

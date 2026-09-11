@@ -1,0 +1,1 @@
+import{a as r}from"../../../../chunks/chunk-GGXMD7HH.js";import"../../../../chunks/chunk-3HYPADOP.js";import"../../../../chunks/chunk-TWABSY6V.js";import{t as m}from"../../../../chunks/chunk-WTBX5XZO.js";import"../../../../chunks/chunk-CMGAA5BS.js";m("bp-format-number",r);

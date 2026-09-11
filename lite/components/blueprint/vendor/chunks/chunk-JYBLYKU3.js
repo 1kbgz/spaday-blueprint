@@ -1,0 +1,1 @@
+var a={name:"add",viewBox:36,type:{default:'<path d="m30 17h-11v-11a1 1 0 1 0 -2 0v11h-11a1 1 0 0 0 -1 1 .91.91 0 0 0 1 .94h11v11.06a1 1 0 1 0 2 0v-11h11a1 1 0 0 0 1-1 1 1 0 0 0 -1-1z"/><path d="m0 0h36v36h-36z" fill="none"/>'}},e=customElements.get("bp-icon");e?customElements.whenDefined("bp-icon").then(()=>e.add(a)):e?.add(a);export{a};

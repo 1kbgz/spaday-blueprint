@@ -1,0 +1,39 @@
+import asyncio
+import re
+
+import httpx
+
+from spaday_blueprint import components, gallery
+
+
+def _tags(value):
+    if isinstance(value, dict):
+        if isinstance(value.get("tag"), str):
+            yield value["tag"]
+        for child in value.values():
+            yield from _tags(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _tags(child)
+
+
+def test_gallery_shows_every_generated_component_with_a_snippet():
+    expected_names = set(components.__all__)
+    expected_tags = {getattr(components, name).tag for name in expected_names}
+    expected_tags.remove("bp-number-stepper")  # Blueprint 2.20's constructor cannot run through document.createElement
+    gallery_tags = {tag for tag in _tags(gallery.page.to_node()) if tag.startswith("bp-")}
+    snippet_names = set(re.findall(r"\bBp[A-Z][A-Za-z]+\b", "\n".join(gallery.COMPONENT_SNIPPETS)))
+
+    assert gallery_tags == expected_tags
+    assert snippet_names == expected_names
+
+
+def test_gallery_app_serves_the_component_tree():
+    async def request():
+        transport = httpx.ASGITransport(app=gallery.app)
+        async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
+            return await client.get("/tree.json")
+
+    response = asyncio.run(request())
+    assert response.status_code == 200
+    assert "bp-tree-item" in response.text

@@ -373,6 +373,25 @@ page = App(
     ),
     Body(
         Main(
+            element(
+                "header",
+                element("p", class_="eyebrow").text("SPADAY · BLUEPRINT UI"),
+                element(
+                    "div",
+                    element("h1").text("Release control"),
+                    BpBadge(status="success").text("Live"),
+                    class_="hero-title",
+                ),
+                element("p", class_="lede").text("Ship services, watch rollouts land, and respond to incidents from one typed Python UI."),
+                element(
+                    "div",
+                    element("span", BpIcon(shape="bolt", status="accent"), " Streaming telemetry"),
+                    element("span", BpIcon(shape="code", status="accent"), " 81 typed components"),
+                    element("span", BpIcon(shape="cloud", status="accent"), " Browser-ready assets"),
+                    class_="hero-meta",
+                ),
+                class_="hero",
+            ),
             BpAlert(
                 element("span", class_="wrap").text(
                     "Service health, rollouts and incidents stream from Python; every control is a typed Blueprint element."
@@ -403,35 +422,73 @@ page = App(
 
 styles = """
 <style>
-  body { margin: 0; background: var(--bp-layer-background-100); color: var(--bp-text-color-500); font-family: var(--bp-text-font); }
-  spa-nav { justify-content: space-between; }
+  body { margin: 0; min-height: 100vh; background: radial-gradient(circle at 12% 0, color-mix(in srgb,
+    var(--bp-status-accent-background-200) 16%, transparent), transparent 30rem), var(--bp-layer-background-100);
+    color: var(--bp-text-color-500); font-family: Inter, var(--bp-text-font), ui-sans-serif, system-ui, sans-serif; }
+  spa-nav { position: sticky; z-index: 20; top: 0; justify-content: space-between; border-bottom: 1px solid var(--bp-object-border-color-100);
+    background: var(--bp-layer-background-200); box-shadow: 0 8px 28px rgba(15,23,42,.06);
+    backdrop-filter: blur(14px); }
   .dark-toggle { display: inline-flex; align-items: center; gap: .5rem; }
   /* shown without an invoking button to anchor to, so placed against the viewport */
   #toast { inset: auto 0 0 auto; }
-  .brand { font-size: 1.1rem; white-space: nowrap; }
-  .page { box-sizing: border-box; width: 100%; max-width: 72rem; margin: 0 auto; padding: 1.5rem 1rem; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 1rem; }
-  .panel { display: grid; gap: 1rem; padding-block: 1rem; }
+  .brand { font-size: 1.05rem; letter-spacing: -.015em; white-space: nowrap; }
+  .page { box-sizing: border-box; width: 100%; max-width: 78rem; margin: 0 auto; padding: 3.5rem 1.25rem 5rem; display: grid;
+    grid-template-columns: minmax(0, 1fr); align-content: start; gap: 1rem; }
+  .hero { padding: 1rem 0 1.25rem; }
+  .eyebrow { margin: 0; color: var(--bp-status-accent-background-200); font-size: .72rem; font-weight: 800; letter-spacing: .16em; }
+  .hero-title { display: flex; align-items: center; gap: .85rem; margin-top: .4rem; }
+  .hero h1 { margin: 0; font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: .98; letter-spacing: -.055em; }
+  .lede { max-width: 44rem; margin: 1rem 0; color: var(--bp-text-color-400); font-size: 1.08rem; line-height: 1.6; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .hero-meta > span { display: inline-flex; align-items: center; gap: .4rem; padding: .45rem .7rem; border: 1px solid var(--bp-object-border-color-100);
+    border-radius: 999px; background: color-mix(in srgb, var(--bp-layer-background-200) 90%, transparent); font-size: .82rem; }
+  bp-tabs { display: block; padding: 1rem 1.2rem 1.3rem; border: 1px solid var(--bp-object-border-color-100); border-radius: 1.1rem;
+    background: var(--bp-layer-background-200); box-shadow: 0 22px 55px rgba(15,23,42,.09); }
+  .panel { display: grid; gap: 1rem; padding-block: 1.25rem .25rem; }
   .summary { color: var(--bp-text-color-500); }
   .muted { color: var(--bp-text-color-400); }
   .wrap { white-space: normal; }
   .services { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; }
+  .service { display: block; padding: 1rem; border: 1px solid var(--bp-object-border-color-100); border-radius: .85rem;
+    background: var(--bp-layer-background-100); box-shadow: 0 8px 24px rgba(15,23,42,.045); transition: transform .18s ease, box-shadow .18s ease; }
+  .service:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(15,23,42,.08); }
   .service-header, .service-footer { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
-  .service-body { display: flex; align-items: center; gap: 1.25rem; }
+  .service-body { display: flex; align-items: center; gap: 1.25rem; padding-block: 1rem; }
   .service-body dl { display: grid; grid-template-columns: auto 1fr; gap: .25rem .75rem; margin: 0; }
   .service-body dt { color: var(--bp-text-color-400); }
   .service-body dd { margin: 0; font-variant-numeric: tabular-nums; white-space: nowrap; }
   h3 { margin: 0; }
   .rollouts, .incidents { display: grid; gap: .5rem; }
-  .rollout { display: grid; grid-template-columns: minmax(12rem, auto) 1fr auto; align-items: center; gap: 1rem; }
+  .rollout { display: grid; grid-template-columns: minmax(12rem, auto) 1fr auto; align-items: center; gap: 1rem; padding: .85rem 1rem;
+    border: 1px solid var(--bp-object-border-color-100); border-radius: .7rem; background: var(--bp-layer-background-100); }
   .incidents bp-alert { display: block; }
-  .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; }
+  .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem 1.5rem; padding: .5rem; }
   .form-grid .wide { grid-column: 1 / -1; }
   @media (max-width: 720px) {
-    .form-grid { grid-template-columns: 1fr; }
+    .page { padding: 1.75rem .75rem 3rem; }
+    .hero-title { align-items: flex-start; flex-direction: column; }
+    .form-grid { grid-template-columns: 1fr; padding-inline: 0; }
     .rollout { grid-template-columns: 1fr; }
   }
 </style>
 """
+
+initial_store = {
+    "dark": False,
+    "tab": 0,
+    "service": "api",
+    "version": "v2.15.0",
+    "replicas": "6",
+    "scheduled": (TODAY + timedelta(days=1)).isoformat(),
+    "traffic": "10",
+    "strategy": "rolling",
+    "canary": True,
+    "notify": False,
+    "notes": "",
+    "deployed": {"body": {"message": ""}},
+    "restarted": {"body": {"message": ""}},
+    "acknowledged": {},
+}
 
 app = serve(
     page,
@@ -444,22 +501,7 @@ app = serve(
         Route("/api/incidents/{id}/acknowledge", acknowledge, methods=["POST"]),
     ],
     background=[transports.autosync(server), stream_release()],
-    store={
-        "dark": False,
-        "tab": 0,
-        "service": "api",
-        "version": "v2.15.0",
-        "replicas": "6",
-        "scheduled": (TODAY + timedelta(days=1)).isoformat(),
-        "traffic": "10",
-        "strategy": "rolling",
-        "canary": True,
-        "notify": False,
-        "notes": "",
-        "deployed": {"body": {"message": ""}},
-        "restarted": {"body": {"message": ""}},
-        "acknowledged": {},
-    },
+    store=initial_store,
     head=styles,
     title="spaday-blueprint example",
 )

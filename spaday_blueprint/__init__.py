@@ -15,12 +15,16 @@ _EXTENSION = Path(__file__).parent / "extension"
 # tags a second time
 _IMPORTS = _EXTENSION / "vendor" / "imports.json"
 
+# the exact version of each JS library the package serves, written by its JS build
+_VERSIONS = _EXTENSION / "versions.json"
+
 package = ComponentPackage(
     name="blueprint",
     assets_dir=_EXTENSION,
     assets=(("css", "css/blueprint.css"), ("js", "cdn/index.js")),
     components=tuple(getattr(_components, name) for name in _component_names),
     imports=tuple(json.loads(_IMPORTS.read_text(encoding="utf-8")).items()) if _IMPORTS.exists() else (),
+    provides=json.loads(_VERSIONS.read_text(encoding="utf-8")) if _VERSIONS.exists() else {},
 )
 
 #: ``css()`` kwarg → (CSS custom property, what it controls), in the shape of

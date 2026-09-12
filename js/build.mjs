@@ -16,8 +16,26 @@ const VENDORED = ["@blueprintui/components", "@blueprintui/icons"];
 // include/time.js does -- finds nothing, and in a browser with scoped element registries
 // defineScopedElement then throws on the undefined class and takes the whole catalog down. Serve
 // the module its types describe.
+const numberStepperPath =
+  "node_modules/@blueprintui/components/dist/number-stepper/element.js";
+const numberStepperSource = fs.readFileSync(numberStepperPath, "utf8");
+const constructorDefault = "this.value = 0, this.step = 1";
+const connectedDefault = "connectedCallback() {\n\t\tsuper.connectedCallback()";
+if (
+  !numberStepperSource.includes(constructorDefault) ||
+  !numberStepperSource.includes(connectedDefault)
+) {
+  throw new Error("Blueprint number-stepper implementation changed");
+}
+
 const PATCHES = {
   "@blueprintui/icons/dist/index.js": 'export * from "./icon/index.js";\n',
+  "@blueprintui/components/dist/number-stepper/element.js": numberStepperSource
+    .replace(constructorDefault, "this.value = 0")
+    .replace(
+      connectedDefault,
+      "connectedCallback() {\n\t\tthis.step ??= 1, super.connectedCallback()",
+    ),
 };
 
 // Every include module, each registering its elements: include/all.js leaves some out (the

@@ -35,11 +35,6 @@ test("a library importing Blueprint by name gets the page's copy", async ({
   expect(errors).toEqual([]);
 });
 
-// Blueprint 2.20's number stepper sets its `step` attribute from its constructor, which
-// document.createElement rejects, so the check can only see the HTMLUnknownElement it falls back to.
-// The test below pins that; drop this exception when it starts failing.
-const UPSTREAM_DEFECTS = ["<bp-number-stepper>"];
-
 test("the package's own bundle satisfies its generated catalog", async ({
   page,
 }) => {
@@ -49,12 +44,10 @@ test("the package's own bundle satisfies its generated catalog", async ({
   ).text();
   await expect(page.locator("#approve")).toBeAttached();
   const problems = await page.evaluate(script);
-  expect(
-    problems.filter((p) => !UPSTREAM_DEFECTS.some((tag) => p.startsWith(tag))),
-  ).toEqual([]);
+  expect(problems).toEqual([]);
 });
 
-test("Blueprint's number stepper still cannot be created with createElement", async ({
+test("the patched number stepper can be created with createElement", async ({
   page,
 }) => {
   await page.goto(PAGE);
@@ -66,5 +59,5 @@ test("Blueprint's number stepper still cannot be created with createElement", as
       constructorSets: new Stepper().getAttributeNames(),
     };
   });
-  expect(r).toEqual({ created: false, constructorSets: ["step"] });
+  expect(r).toEqual({ created: true, constructorSets: [] });
 });

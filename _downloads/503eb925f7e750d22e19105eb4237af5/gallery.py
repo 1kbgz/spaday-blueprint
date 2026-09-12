@@ -98,19 +98,23 @@ actions = _section(
                 BpButtonCopy(value="v2.16.0"),
                 BpButtonExpand(),
                 BpButtonHandle(),
-                BpButtonResize(),
                 BpButtonSort(),
             )
+            resize = BpButtonResize()
             """,
         ),
-        bp.BpButtonGroup(
-            bp.BpButton(action="primary", status="accent").text("Deploy"),
-            bp.BpButtonIcon(shape="ellipsis").text("More"),
-            bp.BpButtonCopy(value="v2.16.0"),
-            bp.BpButtonExpand(),
-            bp.BpButtonHandle(),
-            bp.BpButtonResize(),
-            bp.BpButtonSort(),
+        element(
+            "div",
+            bp.BpButtonGroup(
+                bp.BpButton(action="primary", status="accent").text("Deploy"),
+                bp.BpButtonIcon(shape="ellipsis").text("More"),
+                bp.BpButtonCopy(value="v2.16.0"),
+                bp.BpButtonExpand(),
+                bp.BpButtonHandle(),
+                bp.BpButtonSort(),
+            ),
+            element("div", "Resizable boundary", bp.BpButtonResize(), class_="resize-preview"),
+            class_="stack",
         ),
     ),
     _demo(
@@ -173,7 +177,7 @@ forms = _section(
     ),
     _demo(
         "Dates and numbers",
-        "Native date, time, color, range, and number controls, plus the documented stepper limitation.",
+        "Native date, time, color, range, number, and stepper controls.",
         _snippet(
             "BpColor, BpDate, BpMonth, BpNumber, BpNumberStepper, BpRange, BpTime",
             """
@@ -192,9 +196,7 @@ forms = _section(
             bp.BpDate(value="2026-09-11", **{"aria-label": "Date"}),
             bp.BpMonth(value="2026-09", **{"aria-label": "Month"}),
             bp.BpNumber(value="12", min=0, max=100, **{"aria-label": "Number"}),
-            element("p", class_="upstream-note").text(
-                "Number Stepper is wrapped, but Blueprint 2.20 cannot create it through document.createElement."
-            ),
+            bp.BpNumberStepper(value=12, min=0, max=100, **{"aria-label": "Number stepper"}),
             bp.BpRange(value="65", min=0, max=100, **{"aria-label": "Progress"}),
             bp.BpTime(value="09:30", **{"aria-label": "Time"}),
             class_="form-preview compact-controls",
@@ -489,18 +491,10 @@ layout = _section(
             )
             """,
         ),
-        element(
-            "div",
-            bp.BpPage("Main content", class_="catalog-only")
-            .child_in("header", bp.BpHeader(bp.BpHeaderItem().text("Blueprint")))
-            .child_in("aside-start", bp.BpPanel("Navigation"))
-            .child_in("footer", "Status: ready"),
-            element("div", element("strong").text("Blueprint"), class_="mini-page-header"),
-            element("div", "Navigation", class_="mini-page-nav"),
-            element("div", "Main content", class_="mini-page-main"),
-            element("div", "Status: ready", class_="mini-page-footer"),
-            class_="mini-page",
-        ),
+        bp.BpPage("Main content", class_="mini-page")
+        .child_in("header", bp.BpHeader(bp.BpHeaderItem().text("Blueprint")))
+        .child_in("aside-start", bp.BpPanel("Navigation"))
+        .child_in("footer", "Status: ready"),
     ),
 )
 
@@ -708,20 +702,16 @@ styles = """
   .token-comment { color: #94a3b8; font-style: italic; } .token-operator { color: #7dd3fc; }
   .inline-preview { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
   .stack, .form-preview { display: grid; gap: .8rem; }
+  .resize-preview { display: flex; align-items: center; height: 2.5rem; padding-left: .75rem; border: 1px solid #cbd5e1; background: white; }
+  .resize-preview bp-button-resize { margin-left: auto; }
   .compact-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: end; }
   .selection-preview label { display: inline-flex; align-items: center; gap: .45rem; }
-  .upstream-note { grid-column: 1 / -1; margin: 0; padding: .65rem .75rem; border-left: 3px solid #d97706; color: #92400e;
-    background: #fffbeb; font-size: .82rem; line-height: 1.45; }
   .nested-card { display: block; padding: 1rem; border: 1px solid #dbe3ee; border-radius: .65rem; background: white; }
   .skeleton-demo { display: block; min-height: 2.25rem; }
   .mini-nav { display: block; max-width: 16rem; }
-  .catalog-only { display: none !important; }
-  .mini-page { display: grid; min-width: 26rem; min-height: 12rem; grid-template: auto 1fr auto / 8rem 1fr; border: 1px solid #cbd5e1;
+  .mini-page { display: block; position: relative; contain: layout; min-width: 26rem; min-height: 12rem; border: 1px solid #cbd5e1;
     border-radius: .5rem; overflow: hidden; background: white; }
-  .mini-page-header { grid-column: 1 / -1; padding: .75rem; color: white; background: #172033; }
-  .mini-page-nav { padding: .75rem; border-right: 1px solid #e2e8f0; background: #f1f5f9; }
-  .mini-page-main { padding: .75rem; }
-  .mini-page-footer { grid-column: 1 / -1; padding: .55rem .75rem; border-top: 1px solid #e2e8f0; color: #64748b; font-size: .8rem; }
+  .mini-page::part(internal) { position: absolute; inset: 0; min-height: 0; max-height: none; }
   .format-list { display: grid; gap: .55rem; margin: 0; }
   .format-list div { display: grid; grid-template-columns: 5rem 1fr; gap: 1rem; }
   .format-list dt { color: #64748b; } .format-list dd { margin: 0; font-weight: 700; }

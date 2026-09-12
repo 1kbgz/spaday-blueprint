@@ -57,7 +57,7 @@ Open `http://127.0.0.1:8023` for the standard release-console app or `http://127
 component gallery. The standard app includes service metrics streamed from Python, endpoint-backed
 restart and deploy actions, rollout progress, incident handling, bound forms, tabs, overlays, and shared
 dark-theme state. The gallery documents every generated Blueprint component and provides a highlighted
-Python snippet for each component family; it calls out Blueprint 2.20's broken number-stepper constructor
+Python snippet for each component family, including a working number stepper
 instead of rendering that element.
 
 Both pass the local package descriptor directly, so they do not install or resolve the integration from
@@ -89,8 +89,8 @@ nothing registers twice.
 
 ## Known issues
 
-- Blueprint 2.20's `bp-number-stepper` sets its `step` attribute from its constructor, which
-  `document.createElement` rejects, so spaday cannot render it until that is fixed upstream.
+- Blueprint 2.20's `bp-number-stepper` sets its `step` attribute from its constructor. The served
+  module defers that default until connection so standards-compliant `document.createElement` works.
 - `@blueprintui/icons`' root module omits the `BpIcon` export its types declare; the served copy
   restores it, since Blueprint's own components import it from there.
 

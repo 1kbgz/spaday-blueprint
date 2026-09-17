@@ -30,7 +30,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "spaday>=0.8.2,<1.0",
+    "spaday>=0.9.0,<1.0",
 ]
 
 [project.entry-points."spaday.component_packages"]
@@ -190,4 +190,3 @@ title = "spaday-blueprint"
 root = "README.md"
 pages = []
 use-autoapi = true
-

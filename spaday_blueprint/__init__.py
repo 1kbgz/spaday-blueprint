@@ -6,6 +6,7 @@ from spaday import ComponentPackage
 from . import components as _components
 from .components import *
 from .components import __all__ as _component_names
+from .design import DESIGN
 
 __version__ = "0.1.0"
 
@@ -25,6 +26,7 @@ package = ComponentPackage(
     components=tuple(getattr(_components, name) for name in _component_names),
     imports=tuple(json.loads(_IMPORTS.read_text(encoding="utf-8")).items()) if _IMPORTS.exists() else (),
     provides=json.loads(_VERSIONS.read_text(encoding="utf-8")) if _VERSIONS.exists() else {},
+    design=DESIGN,
 )
 
 #: ``css()`` kwarg → (CSS custom property, what it controls), in the shape of
@@ -50,4 +52,4 @@ TOKENS = {
     "bp_status_danger_background_200": ("--bp-status-danger-background-200", "drives --spa-danger"),
 }
 
-__all__ = [*_component_names, "TOKENS", "package"]  # noqa: PLE0604
+__all__ = [*_component_names, "DESIGN", "TOKENS", "package"]  # noqa: PLE0604

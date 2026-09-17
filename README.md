@@ -27,6 +27,13 @@ Every Blueprint element has a typed class — 80 from `@blueprintui/components` 
 are checked when you author the tree. Installing the package does not inject assets; select it with
 `packages=["blueprint"]` or pass the exported `package` descriptor.
 
+## Generic controls
+
+Selecting this package renders 12 of the 13 controls in `spaday.ui` as Blueprint elements. The
+mapping is exported as `DESIGN`. `RadioGroup` uses spaday's marked native fallback because Blueprint
+provides individual radio controls but no group with a value API. The shared conformance page checks
+the complete control set, including that fallback.
+
 ## Browser examples
 
 - [Open the standard app](https://1kbgz.github.io/spaday-blueprint/lite/) ([source](spaday_blueprint/example.py)).

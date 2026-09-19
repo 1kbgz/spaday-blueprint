@@ -23,3 +23,11 @@ spa-app,
   --spa-warning: var(--bp-status-warning-background-200);
   --spa-danger: var(--bp-status-danger-background-200);
 }
+
+.ui-error {
+  color: var(--bp-status-danger-background-200);
+}
+
+.ui-error:empty {
+  display: none;
+}

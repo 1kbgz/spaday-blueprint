@@ -16,7 +16,8 @@ _TEXT = {**_FIELD, "readonly": "readonly", "placeholder": "placeholder"}
 _WRAP = Wrap(tag="bp-field")
 _LABEL = Part(kind="sibling", tag="label")
 _HELP = Part(kind="sibling", tag="bp-field-message")
-_ERROR = Part(kind="sibling", tag="bp-field-message", props={"status": "error"}, after=True)
+_ERROR = Part(kind="sibling", tag="bp-field-message", props={"class": "ui-error"}, after=True)
+_INVALID = {"aria-invalid": "true"}
 
 DESIGN = Design(
     name="blueprint",
@@ -37,6 +38,7 @@ DESIGN = Design(
             label=_LABEL,
             help=_HELP,
             error=_ERROR,
+            invalid=_INVALID,
             props={**_TEXT, "type": "type"},
             values={"size": _SIZES},
         ),
@@ -46,6 +48,7 @@ DESIGN = Design(
             label=_LABEL,
             help=_HELP,
             error=_ERROR,
+            invalid=_INVALID,
             props={**_TEXT, "rows": "rows", "minlength": "minlength", "maxlength": "maxlength"},
             values={"size": _SIZES},
         ),
@@ -55,6 +58,7 @@ DESIGN = Design(
             label=_LABEL,
             help=_HELP,
             error=_ERROR,
+            invalid=_INVALID,
             props={**_TEXT, "min": "min", "max": "max", "step": "step"},
             values={"size": _SIZES},
             value=Value(codec="number"),
@@ -65,6 +69,7 @@ DESIGN = Design(
             label=_LABEL,
             help=_HELP,
             error=_ERROR,
+            invalid=_INVALID,
             props={**_TEXT, "min": "min", "max": "max"},
             values={"size": _SIZES},
         ),
@@ -74,6 +79,7 @@ DESIGN = Design(
             label=_LABEL,
             help=_HELP,
             error=_ERROR,
+            invalid=_INVALID,
             props=_FIELD,
             values={"size": _SIZES},
             value=Value(prop="checked"),
@@ -84,6 +90,7 @@ DESIGN = Design(
             label=_LABEL,
             help=_HELP,
             error=_ERROR,
+            invalid=_INVALID,
             props=_FIELD,
             values={"size": _SIZES},
             value=Value(prop="checked"),
@@ -94,6 +101,7 @@ DESIGN = Design(
             label=_LABEL,
             help=_HELP,
             error=_ERROR,
+            invalid=_INVALID,
             props={**_FIELD, "placeholder": "placeholder"},
             values={"size": _SIZES},
             options=Options(kind="children", tag="bp-option", value="value", label="text", selected="selected"),
@@ -105,6 +113,7 @@ DESIGN = Design(
             label=_LABEL,
             help=_HELP,
             error=_ERROR,
+            invalid=_INVALID,
             props={**_FIELD, "readonly": "readonly", "min": "min", "max": "max", "step": "step"},
             values={"size": _SIZES},
             value=Value(codec="number"),

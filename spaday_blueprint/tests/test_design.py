@@ -50,10 +50,18 @@ def test_fields_use_blueprint_field_composition():
     assert text["tag"] == "bp-field"
     label, help_text, control, error = text["slots"]["default"]
     assert (label["tag"], _props(label)) == ("label", {"textContent": "Name"})
-    assert (control["tag"], _props(control)) == ("bp-input", {"type": "search", "size": "lg"})
+    assert (control["tag"], _props(control)) == ("bp-input", {"aria-invalid": "true", "type": "search", "size": "lg"})
     assert control["bindings"] == {"value": {"field": "name", "mode": "two-way"}}
     assert (help_text["tag"], _props(help_text)) == ("bp-field-message", {"textContent": "Hint"})
-    assert (error["tag"], _props(error)) == ("bp-field-message", {"status": "error", "textContent": "Bad"})
+    assert (error["tag"], _props(error)) == ("bp-field-message", {"class": "ui-error", "textContent": "Bad"})
+
+    bound = _find(resolve(TextInput().bind("error", "message").to_node(), DESIGN), "bp-input")
+    assert bound["bindings"]["aria-invalid"]["compute"] == {
+        "expr": "cond",
+        "test": {"expr": "field", "name": "message"},
+        "then": {"expr": "lit", "value": "true"},
+        "else": {"expr": "lit", "value": None},
+    }
 
     textarea = _find(resolve(TextArea(rows=3, minlength=2, maxlength=20).to_node(), DESIGN), "bp-textarea")
     assert _props(textarea) == {"rows": 3, "minlength": 2, "maxlength": 20}
@@ -64,7 +72,8 @@ def test_fields_use_blueprint_field_composition():
 
 def test_choices_toggles_and_slider_use_blueprint_controls():
     checkbox = _find(resolve(Checkbox(label="Agree").bind("value", "agree", mode="two-way").to_node(), DESIGN), "bp-checkbox")
-    assert checkbox["bindings"] == {"checked": {"field": "agree", "mode": "two-way"}}
+    assert checkbox["bindings"]["checked"] == {"field": "agree", "mode": "two-way"}
+    assert checkbox["bindings"]["aria-invalid"]["compute"]["test"] == {"expr": "field", "name": "$errors.agree"}
 
     select = _find(resolve(Select(options=["a", {"value": 2, "label": "Two"}], value=2).to_node(), DESIGN), "bp-select")
     assert [(option["tag"], _props(option)) for option in select["slots"]["default"]] == [

@@ -83,15 +83,61 @@ test("select, actions, and dialog stay bound", async ({ page }) => {
   await expect(dialog).toHaveJSProperty("open", false);
 });
 
+test("an initially open dialog waits until it is connected", async ({
+  page,
+}) => {
+  await page.goto(PAGE);
+  await page.evaluate(async () => {
+    const bootstrap = [...document.scripts].find(
+      (script) =>
+        script.type === "module" && script.textContent.includes("mount"),
+    );
+    const runtime = bootstrap.textContent.match(/from "([^"]+)"/)[1];
+    const { mount, Store } = await import(runtime);
+    const host = document.createElement("div");
+    host.id = "initial-dialog-host";
+    document.body.append(host);
+    mount(
+      host,
+      {
+        tag: "bp-dialog",
+        props: { id: { Str: "initial-dialog" }, modal: { Bool: true } },
+        bindings: {
+          open: {
+            compute: { expr: "lit", value: true },
+            mode: "one-way",
+            methods: ["showPopover", "hidePopover"],
+            state: "open",
+          },
+        },
+      },
+      new Store({}),
+    );
+  });
+  const dialog = page.locator("#initial-dialog");
+  await expect(dialog).toHaveJSProperty("open", true);
+  await dialog.evaluate((element) => element.hidePopover());
+  await page
+    .locator("#initial-dialog-host")
+    .evaluate((element) => element.remove());
+});
+
 test("labels, help, errors, feedback, and disabled state render", async ({
   page,
 }) => {
   await page.goto(PAGE);
   await expect(page.getByText("Your name")).toBeVisible();
   await expect(page.getByText("Required")).toBeVisible();
+  await expect(page.locator("#email")).toHaveAttribute("aria-invalid", "true");
+  await page.locator("#reset").click();
+  await expect(page.locator("#email")).not.toHaveAttribute("aria-invalid");
+  await expect(page.getByText("Required")).toHaveCount(0);
+  await page.locator("#validate").click();
+  await expect(page.locator("#email")).toHaveAttribute("aria-invalid", "true");
   await expect(page.locator("#never")).toHaveJSProperty("disabled", true);
   await expect(page.locator("#save")).toHaveText("Save");
   await expect(page.locator("#save")).toHaveAttribute("status", "accent");
   await expect(page.locator("#alert")).toContainText("Portable");
   await expect(page.locator("#progress")).toHaveJSProperty("value", 25);
+  await expect(page.locator("#progress")).toHaveJSProperty("max", 50);
 });

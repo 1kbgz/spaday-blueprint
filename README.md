@@ -1,4 +1,9 @@
-# spaday-blueprint
+<a href="https://github.com/1kbgz/spaday-blueprint">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/1kbgz/spaday-blueprint/raw/main/docs/img/logo-dark.webp?raw=true">
+    <img alt="spaday-blueprint logo, a component blueprint inside a browser window" src="https://github.com/1kbgz/spaday-blueprint/raw/main/docs/img/logo-light.webp?raw=true" width="1200">
+  </picture>
+</a>
 
 Typed [Blueprint](https://blueprintui.dev) components and browser assets for [spaday](https://github.com/1kbgz/spaday).
 

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" shape-rendering="geometricPrecision" role="img" aria-label="spaday-blueprint">
+  <title>spaday-blueprint</title>
+  <defs><clipPath id="viewport-clip"><rect x="124" y="243" width="1006" height="854" rx="62"/></clipPath></defs>
+  <rect x="88" y="96" width="1078" height="1036" rx="108" fill="#0C4253"/>
+  <rect x="124" y="243" width="1006" height="854" rx="62" fill="#F2F3EF"/>
+  <circle cx="208" cy="175" r="25" fill="#FC6B47"/><circle cx="295" cy="175" r="25" fill="#AECEC3"/><circle cx="383" cy="175" r="25" fill="#F2F3EF"/>
+  <g clip-path="url(#viewport-clip)" transform="translate(0 -40)">
+    <path d="M390 330c-92 0-166 74-166 166v426c0 92 74 166 166 166h642V430H566c-27-59-94-100-176-100Z" fill="#0C4253"/>
+    <path d="M390 392c65 0 116 51 116 116v355c-33-31-74-49-116-49s-83 18-116 49V496c0-57 49-104 116-104Z" fill="#AECEC3"/>
+    <rect x="596" y="490" width="406" height="538" rx="18" fill="#AECEC3"/>
+    <g stroke="#F2F3EF" stroke-width="5" opacity=".58">
+      <path d="M596 670H1002M596 850H1002"/>
+      <path d="M731 490V1028M867 490V1028"/>
+    </g>
+    <g fill="none" stroke="#0C4253" stroke-width="18">
+      <rect x="650" y="555" width="298" height="160" rx="18"/>
+      <rect x="650" y="760" width="135" height="150" rx="18"/>
+      <rect x="813" y="760" width="135" height="150" rx="18"/>
+    </g>
+    <circle cx="799" cy="555" r="27" fill="#FC6B47"/>
+  </g>
+</svg>

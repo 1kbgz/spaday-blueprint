@@ -30,7 +30,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "spaday>=0.8.2,<1.0",
+    "spaday>=0.10.0,<1.0",
 ]
 
 [project.entry-points."spaday.component_packages"]
@@ -40,7 +40,7 @@ blueprint = "spaday_blueprint:package"
 examples = [
     "pydantic>=2",
     "starlette",
-    "transports",
+    "transports>=0.8.6,<0.9",
     "uvicorn",
     "websockets",
 ]
@@ -59,7 +59,7 @@ develop = [
     "pytest-cov",
     "ruff",
     "starlette",
-    "transports",
+    "transports>=0.8.6,<0.9",
     "twine",
     "ty",
     "uv",
@@ -190,4 +190,3 @@ title = "spaday-blueprint"
 root = "README.md"
 pages = []
 use-autoapi = true
-

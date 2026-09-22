@@ -1,0 +1,40 @@
+test_design
+===========
+
+.. py:module:: test_design
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   test_design._props
+   test_design._find
+   test_design.test_find_walks_all_slots_and_reports_missing_tags
+   test_design.test_the_package_publishes_its_design
+   test_design.test_fields_use_blueprint_field_composition
+   test_design.test_choices_toggles_and_slider_use_blueprint_controls
+   test_design.test_feedback_actions_and_dialog_use_blueprint_controls
+   test_design.test_conformance_uses_one_explicit_native_fallback
+
+
+Module Contents
+---------------
+
+.. py:function:: _props(node: dict) -> dict
+
+.. py:function:: _find(node: dict, tag: str) -> dict
+
+.. py:function:: test_find_walks_all_slots_and_reports_missing_tags()
+
+.. py:function:: test_the_package_publishes_its_design()
+
+.. py:function:: test_fields_use_blueprint_field_composition()
+
+.. py:function:: test_choices_toggles_and_slider_use_blueprint_controls()
+
+.. py:function:: test_feedback_actions_and_dialog_use_blueprint_controls()
+
+.. py:function:: test_conformance_uses_one_explicit_native_fallback()
+

@@ -1,0 +1,24 @@
+spaday_blueprint.design
+=======================
+
+.. py:module:: spaday_blueprint.design
+
+.. autoapi-nested-parse::
+
+   How Blueprint renders spaday's generic controls (:mod:`spaday.ui`).
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   spaday_blueprint.design.DESIGN
+
+
+Module Contents
+---------------
+
+.. py:data:: DESIGN
+

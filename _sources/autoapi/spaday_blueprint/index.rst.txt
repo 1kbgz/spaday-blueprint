@@ -11,6 +11,7 @@ Submodules
    :maxdepth: 1
 
    /autoapi/spaday_blueprint/components/index
+   /autoapi/spaday_blueprint/design/index
    /autoapi/spaday_blueprint/example/index
    /autoapi/spaday_blueprint/gallery/index
 
@@ -20,6 +21,7 @@ Attributes
 
 .. autoapisummary::
 
+   spaday_blueprint.DESIGN
    spaday_blueprint.package
    spaday_blueprint.TOKENS
 
@@ -1424,6 +1426,8 @@ Package Contents
 
    .. py:attribute:: schema
 
+
+.. py:data:: DESIGN
 
 .. py:data:: package
 

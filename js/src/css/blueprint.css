@@ -16,6 +16,7 @@ spa-app,
   --spa-surface: var(--bp-layer-background-200);
   --spa-surface-2: var(--bp-layer-background-100);
   --spa-border: var(--bp-object-border-color-100);
+  --spa-text: var(--bp-text-color-500);
   --spa-muted: var(--bp-text-color-400);
   --spa-accent: var(--bp-status-accent-background-200);
   --spa-info: var(--bp-status-accent-background-200);

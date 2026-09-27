@@ -46,6 +46,9 @@ def test_tokens_are_blueprint_tokens_the_css_kwarg_produces():
         assert prop.startswith("--bp-") and description.startswith("drives --spa-")
         assert element("div").css(**{kwarg: "x"}).to_node()["props"]["style"]["Str"] == f"{prop}: x"
 
+    css = (ROOT.parent / "js/src/css/blueprint.css").read_text(encoding="utf-8")
+    assert "--spa-text: var(--bp-text-color-500);" in css
+
 
 def test_generated_catalog_is_current():
     fresh = generate(str(ROOT / "custom-elements.json"))

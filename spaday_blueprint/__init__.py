@@ -45,6 +45,7 @@ TOKENS = {
     "bp_layer_background_200": Token("--bp-layer-background-200", "drives --spa-surface"),
     "bp_layer_background_100": Token("--bp-layer-background-100", "drives --spa-surface-2"),
     "bp_object_border_color_100": Token("--bp-object-border-color-100", "drives --spa-border"),
+    "bp_text_color_500": Token("--bp-text-color-500", "drives --spa-text"),
     "bp_text_color_400": Token("--bp-text-color-400", "drives --spa-muted"),
     "bp_status_accent_background_200": Token("--bp-status-accent-background-200", "drives --spa-accent and --spa-info"),
     "bp_status_success_background_200": Token("--bp-status-success-background-200", "drives --spa-success"),

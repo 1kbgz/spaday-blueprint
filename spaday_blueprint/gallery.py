@@ -446,7 +446,8 @@ navigation = _section(
     ),
     _demo(
         "Tree",
-        "Navigate nested, selectable items.",
+        "Navigate nested, selectable items. Repeated tree items need Each(..., direct=True) because "
+        "Blueprint assigns direct children to its items slot.",
         _snippet(
             "BpTree, BpTreeItem",
             """

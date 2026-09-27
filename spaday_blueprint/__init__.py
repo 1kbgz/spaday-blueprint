@@ -1,14 +1,14 @@
 import json
 from pathlib import Path
 
-from spaday import ComponentPackage
+from spaday import ComponentPackage, Token
 
 from . import components as _components
 from .components import *
 from .components import __all__ as _component_names
 from .design import DESIGN
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 _EXTENSION = Path(__file__).parent / "extension"
 # Blueprint's modules under its own bare specifiers, written by the JS build (js/tools/vendor.mjs): a
@@ -42,14 +42,14 @@ package = ComponentPackage(
 #: Every other Blueprint token works the same way (``css()`` takes arbitrary custom properties);
 #: these are the ones wired to the shell palette.
 TOKENS = {
-    "bp_layer_background_200": ("--bp-layer-background-200", "drives --spa-surface"),
-    "bp_layer_background_100": ("--bp-layer-background-100", "drives --spa-surface-2"),
-    "bp_object_border_color_100": ("--bp-object-border-color-100", "drives --spa-border"),
-    "bp_text_color_400": ("--bp-text-color-400", "drives --spa-muted"),
-    "bp_status_accent_background_200": ("--bp-status-accent-background-200", "drives --spa-accent and --spa-info"),
-    "bp_status_success_background_200": ("--bp-status-success-background-200", "drives --spa-success"),
-    "bp_status_warning_background_200": ("--bp-status-warning-background-200", "drives --spa-warning"),
-    "bp_status_danger_background_200": ("--bp-status-danger-background-200", "drives --spa-danger"),
+    "bp_layer_background_200": Token("--bp-layer-background-200", "drives --spa-surface"),
+    "bp_layer_background_100": Token("--bp-layer-background-100", "drives --spa-surface-2"),
+    "bp_object_border_color_100": Token("--bp-object-border-color-100", "drives --spa-border"),
+    "bp_text_color_400": Token("--bp-text-color-400", "drives --spa-muted"),
+    "bp_status_accent_background_200": Token("--bp-status-accent-background-200", "drives --spa-accent and --spa-info"),
+    "bp_status_success_background_200": Token("--bp-status-success-background-200", "drives --spa-success"),
+    "bp_status_warning_background_200": Token("--bp-status-warning-background-200", "drives --spa-warning"),
+    "bp_status_danger_background_200": Token("--bp-status-danger-background-200", "drives --spa-danger"),
 }
 
 __all__ = [*_component_names, "DESIGN", "TOKENS", "package"]  # noqa: PLE0604

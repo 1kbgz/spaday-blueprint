@@ -53,6 +53,7 @@ develop = [
     "hatchling",
     "httpx",
     "mdformat",
+    "mdformat-frontmatter",
     "mdformat-tables>=1",
     "pydantic>=2",
     "pytest",
@@ -104,7 +105,7 @@ branch = true
 omit = [
     "spaday_blueprint/components.py",
     "spaday_blueprint/example.py",
-    "spaday_blueprint/tests/integration.py",
+    "spaday_blueprint/tests/integration/*",
 ]
 
 [tool.coverage.report]

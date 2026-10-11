@@ -10,6 +10,7 @@ from spaday.backends.starlette import serve
 from spaday.components.shell import App, Body, Each, Main, Nav, Row
 from starlette.responses import JSONResponse
 from starlette.routing import Route, WebSocketRoute
+from typing_extensions import TypedDict
 
 from spaday_blueprint import (
     BpAlert,
@@ -75,9 +76,18 @@ def service(key: str, cpu: int, version: str | None = None, requests: float | No
     }
 
 
+class Rollout(TypedDict):
+    id: str
+    service: str
+    name: str
+    version: str
+    progress: int
+    status: str
+
+
 class ReleaseFeed(BaseModel):
     services: list[dict] = [service(key, cpu) for key, (_, _, cpu, _, _) in SERVICES.items()]
-    rollouts: list[dict] = [{"id": "R-1", "service": "billing", "name": "Billing", "version": "v3.0.7", "progress": 100, "status": "Live"}]
+    rollouts: list[Rollout] = [{"id": "R-1", "service": "billing", "name": "Billing", "version": "v3.0.7", "progress": 100, "status": "Live"}]
     incidents: list[dict] = [
         {"id": "INC-7", "text": "Elevated p99 latency on Search in eu-west-1", "status": "warning", "acknowledged": False},
         {"id": "INC-6", "text": "Billing webhooks retried after a provider timeout", "status": "accent", "acknowledged": True},
@@ -118,6 +128,7 @@ async def stream_release() -> None:
             cpu = max(5, min(95, row["cpu"] + DRIFT[(tick + index) % len(DRIFT)]))
             services.append(service(row["id"], cpu, row["version"], round(row["requests"] * (1 + (cpu - row["cpu"]) / 200))))
         rollouts = []
+        rollout: Rollout
         for rollout in feed.rollouts:
             if rollout["status"] == "Rolling out":
                 progress = min(100, rollout["progress"] + 20)
@@ -147,7 +158,7 @@ async def deploy(request):
     version = (body.get("version") or "").strip()
     if key not in SERVICES or not version:
         return JSONResponse({"message": "Choose a service and a version to deploy."}, status_code=422)
-    rollout = {
+    rollout: Rollout = {
         "id": f"R-{max(int(row['id'].removeprefix('R-')) for row in feed.rollouts) + 1}",
         "service": key,
         "name": SERVICES[key][0],

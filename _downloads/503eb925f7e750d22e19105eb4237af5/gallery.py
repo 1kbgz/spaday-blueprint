@@ -134,7 +134,7 @@ actions = _section(
         ),
         element(
             "div",
-            bp.BpAvatar(bp.BpIcon(shape="user", status="accent"), shape="circle", status="accent"),
+            bp.BpAvatar(bp.BpIcon(shape="user", status="accent"), shape="rounded", status="accent"),
             bp.BpBadge(status="success").text("Healthy"),
             bp.BpTag(status="accent", readonly=True).text("production"),
             class_="inline-preview",
@@ -318,7 +318,7 @@ content = _section(
         ),
         bp.BpChatGroup(
             bp.BpChatMessage(type="received").text("Ready to deploy?"),
-            bp.BpChatMessage(type="sent", color="accent").text("Ship it."),
+            bp.BpChatMessage(type="sent", color="blue").text("Ship it."),
         ),
     ),
 )
@@ -536,7 +536,7 @@ feedback = _section(
         element(
             "div",
             bp.BpProgressBar(value=65, max=100, status="accent"),
-            element("div", bp.BpProgressCircle(value=65, status="success"), bp.BpProgressDot(size="md"), class_="inline-preview"),
+            element("div", bp.BpProgressCircle(value=65, status="success"), bp.BpProgressDot(), class_="inline-preview"),
             class_="stack",
         ),
     ),
@@ -555,7 +555,7 @@ feedback = _section(
             bp.BpButton().text("Open dialog").on("click", Invoke(by_id("gallery-dialog"), "showPopover")),
             bp.BpButton().text("Open drawer").on("click", Invoke(by_id("gallery-drawer"), "showPopover")),
             bp.BpDialog("Changes have been saved.", id="gallery-dialog", modal=True, closable=True).child_in("header", "Saved"),
-            bp.BpDrawer("Filters go here.", id="gallery-drawer", position="inline-end", closable=True),
+            bp.BpDrawer("Filters go here.", id="gallery-drawer", position="right", closable=True),
             class_="inline-preview",
         ),
     ),

@@ -34,6 +34,7 @@ Classes
 
 .. autoapisummary::
 
+   spaday_blueprint.example.Rollout
    spaday_blueprint.example.ReleaseFeed
 
 
@@ -66,6 +67,48 @@ Module Contents
 .. py:data:: HEALTH
 
 .. py:function:: service(key: str, cpu: int, version: str | None = None, requests: float | None = None) -> dict
+
+.. py:class:: Rollout
+
+   Bases: :py:obj:`TypedDict`
+
+
+   dict() -> new empty dictionary
+   dict(mapping) -> new dictionary initialized from a mapping object's
+       (key, value) pairs
+   dict(iterable) -> new dictionary initialized as if via:
+       d = {}
+       for k, v in iterable:
+           d[k] = v
+   dict(**kwargs) -> new dictionary initialized with the name=value pairs
+       in the keyword argument list.  For example:  dict(one=1, two=2)
+
+   Initialize self.  See help(type(self)) for accurate signature.
+
+
+   .. py:attribute:: id
+      :type:  str
+
+
+   .. py:attribute:: service
+      :type:  str
+
+
+   .. py:attribute:: name
+      :type:  str
+
+
+   .. py:attribute:: version
+      :type:  str
+
+
+   .. py:attribute:: progress
+      :type:  int
+
+
+   .. py:attribute:: status
+      :type:  str
+
 
 .. py:class:: ReleaseFeed(/, **data: Any)
 
@@ -167,7 +210,7 @@ Module Contents
 
 
    .. py:attribute:: rollouts
-      :type:  list[dict]
+      :type:  list[Rollout]
 
 
    .. py:attribute:: incidents

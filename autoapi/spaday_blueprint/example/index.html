@@ -322,7 +322,10 @@
 <div class="table-wrapper autosummary longtable docutils container">
 <table class="autosummary longtable docutils align-default">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#spaday_blueprint.example.ReleaseFeed" title="spaday_blueprint.example.ReleaseFeed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReleaseFeed</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#spaday_blueprint.example.Rollout" title="spaday_blueprint.example.Rollout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Rollout</span></code></a></p></td>
+<td><p>dict() -&gt; new empty dictionary</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#spaday_blueprint.example.ReleaseFeed" title="spaday_blueprint.example.ReleaseFeed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReleaseFeed</span></code></a></p></td>
 <td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
 </tr>
 </tbody>
@@ -393,6 +396,58 @@
 <dt class="sig sig-object py" id="spaday_blueprint.example.service">
 <span class="sig-prename descclassname"><span class="pre">spaday_blueprint.example.</span></span><span class="sig-name descname"><span class="pre">service</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">requests</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="headerlink" href="#spaday_blueprint.example.service" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="spaday_blueprint.example.Rollout">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">spaday_blueprint.example.</span></span><span class="sig-name descname"><span class="pre">Rollout</span></span><a class="headerlink" href="#spaday_blueprint.example.Rollout" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">TypedDict</span></code></p>
+<p>dict() -&gt; new empty dictionary
+dict(mapping) -&gt; new dictionary initialized from a mapping object’s</p>
+<blockquote>
+<div><p>(key, value) pairs</p>
+</div></blockquote>
+<dl>
+<dt>dict(iterable) -&gt; new dictionary initialized as if via:</dt><dd><p>d = {}
+for k, v in iterable:</p>
+<blockquote>
+<div><p>d[k] = v</p>
+</div></blockquote>
+</dd>
+<dt>dict(<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs) -&gt; new dictionary initialized with the name=value pairs</dt><dd><p>in the keyword argument list.  For example:  dict(one=1, two=2)</p>
+</dd>
+</dl>
+<p>Initialize self.  See help(type(self)) for accurate signature.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spaday_blueprint.example.Rollout.id">
+<span class="sig-name descname"><span class="pre">id</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#spaday_blueprint.example.Rollout.id" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spaday_blueprint.example.Rollout.service">
+<span class="sig-name descname"><span class="pre">service</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#spaday_blueprint.example.Rollout.service" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spaday_blueprint.example.Rollout.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#spaday_blueprint.example.Rollout.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spaday_blueprint.example.Rollout.version">
+<span class="sig-name descname"><span class="pre">version</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#spaday_blueprint.example.Rollout.version" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spaday_blueprint.example.Rollout.progress">
+<span class="sig-name descname"><span class="pre">progress</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#spaday_blueprint.example.Rollout.progress" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="spaday_blueprint.example.Rollout.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#spaday_blueprint.example.Rollout.status" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="spaday_blueprint.example.ReleaseFeed">
@@ -527,7 +582,7 @@ validated to form a valid model.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="spaday_blueprint.example.ReleaseFeed.rollouts">
-<span class="sig-name descname"><span class="pre">rollouts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#spaday_blueprint.example.ReleaseFeed.rollouts" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">rollouts</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#spaday_blueprint.example.Rollout" title="spaday_blueprint.example.Rollout"><span class="pre">Rollout</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#spaday_blueprint.example.ReleaseFeed.rollouts" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -777,6 +832,15 @@ incident.</p>
 <li><a class="reference internal" href="#spaday_blueprint.example.DRIFT"><code class="docutils literal notranslate"><span class="pre">DRIFT</span></code></a></li>
 <li><a class="reference internal" href="#spaday_blueprint.example.HEALTH"><code class="docutils literal notranslate"><span class="pre">HEALTH</span></code></a></li>
 <li><a class="reference internal" href="#spaday_blueprint.example.service"><code class="docutils literal notranslate"><span class="pre">service()</span></code></a></li>
+<li><a class="reference internal" href="#spaday_blueprint.example.Rollout"><code class="docutils literal notranslate"><span class="pre">Rollout</span></code></a><ul>
+<li><a class="reference internal" href="#spaday_blueprint.example.Rollout.id"><code class="docutils literal notranslate"><span class="pre">Rollout.id</span></code></a></li>
+<li><a class="reference internal" href="#spaday_blueprint.example.Rollout.service"><code class="docutils literal notranslate"><span class="pre">Rollout.service</span></code></a></li>
+<li><a class="reference internal" href="#spaday_blueprint.example.Rollout.name"><code class="docutils literal notranslate"><span class="pre">Rollout.name</span></code></a></li>
+<li><a class="reference internal" href="#spaday_blueprint.example.Rollout.version"><code class="docutils literal notranslate"><span class="pre">Rollout.version</span></code></a></li>
+<li><a class="reference internal" href="#spaday_blueprint.example.Rollout.progress"><code class="docutils literal notranslate"><span class="pre">Rollout.progress</span></code></a></li>
+<li><a class="reference internal" href="#spaday_blueprint.example.Rollout.status"><code class="docutils literal notranslate"><span class="pre">Rollout.status</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#spaday_blueprint.example.ReleaseFeed"><code class="docutils literal notranslate"><span class="pre">ReleaseFeed</span></code></a><ul>
 <li><a class="reference internal" href="#spaday_blueprint.example.ReleaseFeed.__class_vars__"><code class="docutils literal notranslate"><span class="pre">ReleaseFeed.__class_vars__</span></code></a></li>
 <li><a class="reference internal" href="#spaday_blueprint.example.ReleaseFeed.__private_attributes__"><code class="docutils literal notranslate"><span class="pre">ReleaseFeed.__private_attributes__</span></code></a></li>

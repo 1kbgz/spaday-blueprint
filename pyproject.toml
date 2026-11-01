@@ -40,7 +40,7 @@ blueprint = "spaday_blueprint:package"
 examples = [
     "pydantic>=2",
     "starlette",
-    "transports>=0.8.6,<0.9",
+    "transports>=0.8.6,<0.11",
     "uvicorn",
     "websockets",
 ]
@@ -60,7 +60,7 @@ develop = [
     "pytest-cov",
     "ruff",
     "starlette",
-    "transports>=0.8.6,<0.9",
+    "transports>=0.8.6,<0.11",
     "twine",
     "ty",
     "uv",
